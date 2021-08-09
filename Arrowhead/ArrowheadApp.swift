@@ -10,11 +10,11 @@ import SwiftUI
 @main
 struct ArrowheadApp: App {
     let persistenceController = PersistenceController.shared
-    @State var url = URL(string: "hi")
+    @State var urls: [URL] = []
 
     var body: some Scene {
         WindowGroup {
-            ContentView(url: url!)
+            ContentView(urls: urls)
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }

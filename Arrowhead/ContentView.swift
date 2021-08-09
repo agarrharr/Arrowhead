@@ -10,7 +10,7 @@ import CoreData
 
 struct ContentView: View {
     @State var showFilePicker = false
-    @State var url: URL
+    @State var urls: [URL]
     
     @Environment(\.managedObjectContext) private var viewContext
     @FetchRequest(
@@ -21,20 +21,20 @@ struct ContentView: View {
     var body: some View {
         VStack {
             List {
-                ForEach(bookmarks) { bookmark in
+                ForEach(urls, id: \.self) { url in
                     // TODO: show the folder name here
-                    Text("Some bookmark")
+                    Text(url.lastPathComponent)
                 }
-                .onDelete(perform: deleteItems)
+                //.onDelete(perform: deleteItems)
             }
-            Text(url.lastPathComponent)
+            
             Button(action: {
                 showFilePicker = true
             }) {
                 Label("Add Location", systemImage: "plus")
             }
             .sheet(isPresented: $showFilePicker, content: {
-                DocumentPicker(url: $url)
+                DocumentPicker(urls: $urls)
             })
         }
     }
@@ -79,7 +79,7 @@ private let itemFormatter: DateFormatter = {
 }()
 
 struct DocumentPicker: UIViewControllerRepresentable {
-    @Binding var url: URL
+    @Binding var urls: [URL]
     @Environment(\.presentationMode) var presentationMode
     
     func makeCoordinator() -> Coordinator {
@@ -106,7 +106,9 @@ struct DocumentPicker: UIViewControllerRepresentable {
         }
         
         func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL) {
-            parent.url = url
+            print("Did pick url: ", url)
+            print("urls count: ", parent.urls.count)
+            parent.urls.append(url)
 //            parent.presentationMode.wrappedValue.dismiss()
         }
         
@@ -181,8 +183,8 @@ struct DocumentPicker: UIViewControllerRepresentable {
 }
 
 struct ContentView_Previews: PreviewProvider {
-    @State static var url = URL(string: "hi")
+    @State static var urls = [URL(string: "hi")!]
     static var previews: some View {
-        ContentView(url: url!).environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        ContentView(urls: urls).environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }
