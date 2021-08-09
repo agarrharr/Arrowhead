@@ -21,8 +21,7 @@ struct DetailView: View {
         .onAppear {
             urls = fileController.getContentsOfDirectory(url: url)
         }
-        
-        Text(url.lastPathComponent)
+        .navigationTitle(url.lastPathComponent)
     }
 }
 

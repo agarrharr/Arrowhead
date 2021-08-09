@@ -18,15 +18,15 @@ class BookmarkController: ObservableObject {
         }
     }
     
-    func addBookmark(url: URL) {
-        guard url.startAccessingSecurityScopedResource() else {
+    func addBookmark(for bookmarkURL: URL) {
+        guard bookmarkURL.startAccessingSecurityScopedResource() else {
             // Handle the failure here.
             return
         }
             
         do {
             print("Make bookmark")
-            let bookmarkData = try url.bookmarkData(options: .minimalBookmark, includingResourceValuesForKeys: nil, relativeTo: nil)
+            let bookmarkData = try bookmarkURL.bookmarkData(options: .minimalBookmark, includingResourceValuesForKeys: nil, relativeTo: nil)
             
             print("Bookmark made", bookmarkData)
             
@@ -34,13 +34,25 @@ class BookmarkController: ObservableObject {
             try bookmarkData.write(to: url)
             
             withAnimation {
-                urls.append((uuid, url))
+                urls.append((uuid, bookmarkURL))
             }
         } catch {
             print("Error creating the bookmark")
         }
         
-        url.stopAccessingSecurityScopedResource()
+        bookmarkURL.stopAccessingSecurityScopedResource()
+    }
+    
+    func removeBookmark(atOffsets offsets: IndexSet) {
+        // map over offsets to get uuids
+        let uuids = offsets.map { urls[$0].uuid }
+        // remove from urls
+        urls.remove(atOffsets: offsets)
+        // delete files
+        let url = getAppSandboxDirectory()
+        uuids.forEach { uuid in
+            try? FileManager.default.removeItem(at: url.appendingPathComponent("\(uuid)"))
+        }
     }
     
     private func getAppSandboxDirectory() -> URL {

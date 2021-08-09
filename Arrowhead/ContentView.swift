@@ -21,7 +21,7 @@ struct ContentView: View {
                         NavigationLink(url.lastPathComponent, destination: DetailView(url: url), tag: url, selection: $urlSelection)
                     }
                     .onDelete(perform: { indexSet in
-                        bookmarkController.urls.remove(atOffsets: indexSet)
+                        bookmarkController.removeBookmark(atOffsets: indexSet)
                     })
                 }
 
@@ -69,7 +69,7 @@ struct DocumentPicker: UIViewControllerRepresentable {
         
         func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL) {
             print("Did pick url: ", url)
-            parent.bookmarkController.addBookmark(url: url)
+            parent.bookmarkController.addBookmark(for: url)
         }
         
         func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
