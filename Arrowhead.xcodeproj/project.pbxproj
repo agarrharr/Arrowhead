@@ -14,8 +14,6 @@
 		99E8CFDB26C1701C008CEFE2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E8CFDA26C1701C008CEFE2 /* ContentView.swift */; };
 		99E8CFDD26C1701E008CEFE2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99E8CFDC26C1701E008CEFE2 /* Assets.xcassets */; };
 		99E8CFE026C1701E008CEFE2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99E8CFDF26C1701E008CEFE2 /* Preview Assets.xcassets */; };
-		99E8CFE226C1701E008CEFE2 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E8CFE126C1701E008CEFE2 /* Persistence.swift */; };
-		99E8CFE526C1701F008CEFE2 /* Arrowhead.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 99E8CFE326C1701E008CEFE2 /* Arrowhead.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,8 +25,6 @@
 		99E8CFDA26C1701C008CEFE2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		99E8CFDC26C1701E008CEFE2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		99E8CFDF26C1701E008CEFE2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		99E8CFE126C1701E008CEFE2 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
-		99E8CFE426C1701E008CEFE2 /* Arrowhead.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Arrowhead.xcdatamodel; sourceTree = "<group>"; };
 		99E8CFE626C1701F008CEFE2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -65,9 +61,7 @@
 				99E8CFD826C1701C008CEFE2 /* ArrowheadApp.swift */,
 				99E8CFDA26C1701C008CEFE2 /* ContentView.swift */,
 				99E8CFDC26C1701E008CEFE2 /* Assets.xcassets */,
-				99E8CFE126C1701E008CEFE2 /* Persistence.swift */,
 				99E8CFE626C1701F008CEFE2 /* Info.plist */,
-				99E8CFE326C1701E008CEFE2 /* Arrowhead.xcdatamodeld */,
 				99E8CFDE26C1701E008CEFE2 /* Preview Content */,
 				994C201C26C1C8190029E6DC /* BookmarkController.swift */,
 				994C201E26C1D4EA0029E6DC /* DetailView.swift */,
@@ -155,11 +149,9 @@
 			files = (
 				994C201D26C1C81A0029E6DC /* BookmarkController.swift in Sources */,
 				994C201F26C1D4EA0029E6DC /* DetailView.swift in Sources */,
-				99E8CFE226C1701E008CEFE2 /* Persistence.swift in Sources */,
 				994C202126C1D6D80029E6DC /* FileController.swift in Sources */,
 				99E8CFDB26C1701C008CEFE2 /* ContentView.swift in Sources */,
 				99E8CFD926C1701C008CEFE2 /* ArrowheadApp.swift in Sources */,
-				99E8CFE526C1701F008CEFE2 /* Arrowhead.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -348,19 +340,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		99E8CFE326C1701E008CEFE2 /* Arrowhead.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				99E8CFE426C1701E008CEFE2 /* Arrowhead.xcdatamodel */,
-			);
-			currentVersion = 99E8CFE426C1701E008CEFE2 /* Arrowhead.xcdatamodel */;
-			path = Arrowhead.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 99E8CFCD26C1701C008CEFE2 /* Project object */;
 }

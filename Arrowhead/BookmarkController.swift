@@ -8,11 +8,11 @@
 import SwiftUI
 
 class BookmarkController: ObservableObject {
-    @Published var urls: [URL] = []
+    @Published var urls: [(uuid: String, url: URL)] = []
     
     init(preview: Bool = false) {
         if preview {
-            urls = [URL(string: "asdf/Test")!]
+            urls = [("123", URL(string: "asdf/Test")!)]
         } else {
             getBookmarks()
         }
@@ -30,10 +30,11 @@ class BookmarkController: ObservableObject {
             
             print("Bookmark made", bookmarkData)
             
-            try bookmarkData.write(to: getMyURLForBookmark())
+            let (uuid, url) = getMyURLForBookmark()
+            try bookmarkData.write(to: url)
             
             withAnimation {
-                urls.append(url)
+                urls.append((uuid, url))
             }
         } catch {
             print("Error creating the bookmark")
@@ -46,10 +47,11 @@ class BookmarkController: ObservableObject {
         FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
     }
     
-    func getMyURLForBookmark() -> URL {
+    func getMyURLForBookmark() -> (uuid: String, url: URL) {
         var url = getAppSandboxDirectory()
-        url = url.appendingPathComponent("\(UUID().uuidString).txt")
-        return url
+        let uuid = UUID().uuidString
+        url = url.appendingPathComponent("\(uuid)")
+        return (uuid, url)
     }
     
     func getBookmarks() {
@@ -60,13 +62,14 @@ class BookmarkController: ObservableObject {
                 let bookmarkData = try Data(contentsOf: file)
                 var isStale = false
                 let url = try URL(resolvingBookmarkData: bookmarkData, bookmarkDataIsStale: &isStale)
+                let uuid = file.lastPathComponent
                 
                 guard !isStale else {
                     print("It's stale!!!")
                     return nil
                 }
                 
-                return url
+                return (uuid, url)
             }
             catch let error {
                 print(error)

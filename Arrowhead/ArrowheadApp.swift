@@ -9,14 +9,14 @@ import SwiftUI
 
 @main
 struct ArrowheadApp: App {
-    let persistenceController = PersistenceController.shared
     let bookmarkController = BookmarkController()
+    let fileController = FileController()
 
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environmentObject(bookmarkController)
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                .environmentObject(fileController)
         }
     }
 }

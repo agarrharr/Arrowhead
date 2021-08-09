@@ -17,9 +17,12 @@ struct ContentView: View {
         NavigationView {
             List {
                 Section(header: Text("Locations")) {
-                    ForEach(bookmarkController.urls, id: \.self) { url in
+                    ForEach(bookmarkController.urls, id: \.0) { uuid, url in
                         NavigationLink(url.lastPathComponent, destination: DetailView(url: url), tag: url, selection: $urlSelection)
                     }
+                    .onDelete(perform: { indexSet in
+                        bookmarkController.urls.remove(atOffsets: indexSet)
+                    })
                 }
 
                 Button {
@@ -79,6 +82,5 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
             .environmentObject(BookmarkController(preview: true))
-            .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }
