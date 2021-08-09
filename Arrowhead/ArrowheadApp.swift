@@ -10,11 +10,12 @@ import SwiftUI
 @main
 struct ArrowheadApp: App {
     let persistenceController = PersistenceController.shared
-    @State var urls: [URL] = []
+    let bookmarkController = BookmarkController()
 
     var body: some Scene {
         WindowGroup {
-            ContentView(urls: urls)
+            ContentView()
+                .environmentObject(bookmarkController)
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }

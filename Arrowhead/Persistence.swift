@@ -15,7 +15,7 @@ struct PersistenceController {
         let viewContext = result.container.viewContext
         for _ in 0..<10 {
             let newBookmark = Bookmark(context: viewContext)
-            newBookmark.data = Data()
+            newBookmark.data = "asdf"
         }
         do {
             try viewContext.save()

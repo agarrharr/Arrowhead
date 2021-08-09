@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		994C201D26C1C81A0029E6DC /* BookmarkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994C201C26C1C8190029E6DC /* BookmarkController.swift */; };
+		994C201F26C1D4EA0029E6DC /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994C201E26C1D4EA0029E6DC /* DetailView.swift */; };
+		994C202126C1D6D80029E6DC /* FileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994C202026C1D6D80029E6DC /* FileController.swift */; };
 		99E8CFD926C1701C008CEFE2 /* ArrowheadApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E8CFD826C1701C008CEFE2 /* ArrowheadApp.swift */; };
 		99E8CFDB26C1701C008CEFE2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E8CFDA26C1701C008CEFE2 /* ContentView.swift */; };
 		99E8CFDD26C1701E008CEFE2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99E8CFDC26C1701E008CEFE2 /* Assets.xcassets */; };
@@ -16,6 +19,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		994C201C26C1C8190029E6DC /* BookmarkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkController.swift; sourceTree = "<group>"; };
+		994C201E26C1D4EA0029E6DC /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		994C202026C1D6D80029E6DC /* FileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileController.swift; sourceTree = "<group>"; };
 		99E8CFD526C1701C008CEFE2 /* Arrowhead.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Arrowhead.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		99E8CFD826C1701C008CEFE2 /* ArrowheadApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrowheadApp.swift; sourceTree = "<group>"; };
 		99E8CFDA26C1701C008CEFE2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -63,6 +69,9 @@
 				99E8CFE626C1701F008CEFE2 /* Info.plist */,
 				99E8CFE326C1701E008CEFE2 /* Arrowhead.xcdatamodeld */,
 				99E8CFDE26C1701E008CEFE2 /* Preview Content */,
+				994C201C26C1C8190029E6DC /* BookmarkController.swift */,
+				994C201E26C1D4EA0029E6DC /* DetailView.swift */,
+				994C202026C1D6D80029E6DC /* FileController.swift */,
 			);
 			path = Arrowhead;
 			sourceTree = "<group>";
@@ -144,7 +153,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				994C201D26C1C81A0029E6DC /* BookmarkController.swift in Sources */,
+				994C201F26C1D4EA0029E6DC /* DetailView.swift in Sources */,
 				99E8CFE226C1701E008CEFE2 /* Persistence.swift in Sources */,
+				994C202126C1D6D80029E6DC /* FileController.swift in Sources */,
 				99E8CFDB26C1701C008CEFE2 /* ContentView.swift in Sources */,
 				99E8CFD926C1701C008CEFE2 /* ArrowheadApp.swift in Sources */,
 				99E8CFE526C1701F008CEFE2 /* Arrowhead.xcdatamodeld in Sources */,
