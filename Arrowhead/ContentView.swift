@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import CoreData
 
 struct ContentView: View {
     @State var showFilePicker = false
@@ -16,7 +15,7 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             List {
-                Section(header: Text("Locations")) {
+                Section {
                     ForEach(bookmarkController.urls, id: \.0) { uuid, url in
                         NavigationLink(url.lastPathComponent, destination: DetailView(url: url), tag: url, selection: $urlSelection)
                     }
@@ -37,43 +36,6 @@ struct ContentView: View {
             }
             .navigationTitle("Locations")
             .listStyle(InsetGroupedListStyle())
-        }
-    }
-}
-
-struct DocumentPicker: UIViewControllerRepresentable {
-    @EnvironmentObject private var bookmarkController: BookmarkController
-    
-    func makeCoordinator() -> Coordinator {
-        return Coordinator(self)
-    }
-    
-    func makeUIViewController(context: UIViewControllerRepresentableContext<DocumentPicker>) -> UIDocumentPickerViewController {
-        let documentPicker =
-            UIDocumentPickerViewController(forOpeningContentTypes: [.folder])
-        documentPicker.delegate = context.coordinator
-        // documentPicker.directoryURL = startingDirectory
-        return documentPicker
-    }
-    
-    func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
-        
-    }
-    
-    class Coordinator: NSObject, UIDocumentPickerDelegate {
-        var parent: DocumentPicker
-        
-        init(_ parent: DocumentPicker) {
-            self.parent = parent
-        }
-        
-        func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL) {
-            print("Did pick url: ", url)
-            parent.bookmarkController.addBookmark(for: url)
-        }
-        
-        func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
-            print("Document Picker Was Cancelled")
         }
     }
 }
