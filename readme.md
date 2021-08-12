@@ -2,6 +2,10 @@
 
 Currently the app lets you pick a directory. When you tap on the directory, it shows you all of the files and folders in that directory.
 
+| Locations | Files |
+| --------- | ----- |
+|<img src="https://github.com/agarrharr/Arrowhead/blob/main/images/locations.png?raw=true" alt="Locations" width="300">|<img src="https://github.com/agarrharr/Arrowhead/blob/main/images/files.png?raw=true" alt="Files" width="300">|
+
 ## TODO
 
 - [ ] Fix bug - The first time you pick a directory and tap on it, it shows a blank page. The console shows an error that says you don't have access
