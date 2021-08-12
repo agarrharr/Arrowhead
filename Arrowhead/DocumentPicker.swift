@@ -34,12 +34,11 @@ struct DocumentPicker: UIViewControllerRepresentable {
         }
         
         func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL) {
-            print("Did pick url: ", url)
             parent.bookmarkController.addBookmark(for: url)
         }
         
         func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
-            print("Document Picker Was Cancelled")
+            print("DocumentPicker was cancelled")
         }
     }
 }

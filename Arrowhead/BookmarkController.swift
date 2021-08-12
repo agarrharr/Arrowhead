@@ -23,19 +23,22 @@ class BookmarkController: ObservableObject {
             // Handle the failure here.
             return
         }
-            
+        
         do {
-            print("Make bookmark")
             let bookmarkData = try url.bookmarkData(options: .minimalBookmark, includingResourceValuesForKeys: nil, relativeTo: nil)
-            
-            print("Bookmark made", bookmarkData)
             
             let (uuid, bookmarkFileURL) = getUUIDAndFileURLForBookmark()
             try bookmarkData.write(to: bookmarkFileURL)
             
             withAnimation {
-                urls.append((uuid, url))
+                // I have to get the bookmark with this method or I won't have permission to access it
+                guard let resolvedURL = getBookmarkURL(bookmarkData: bookmarkData) else {
+                    print("Error getting the newly created bookmark")
+                    return
+                }
+                urls.append((uuid, resolvedURL))
             }
+            
         } catch {
             print("Error creating the bookmark")
         }
@@ -44,14 +47,11 @@ class BookmarkController: ObservableObject {
     }
     
     func removeBookmark(atOffsets offsets: IndexSet) {
-        // map over offsets to get uuids
         let uuids = offsets.map { urls[$0].uuid }
-        // remove from urls
         urls.remove(atOffsets: offsets)
-        // delete files
-        let url = getAppSandboxDirectory()
+        
         uuids.forEach { uuid in
-            try? FileManager.default.removeItem(at: url.appendingPathComponent("\(uuid)"))
+            try? FileManager.default.removeItem(at: getAppSandboxDirectory().appendingPathComponent("\(uuid)"))
         }
     }
     
@@ -72,15 +72,8 @@ class BookmarkController: ObservableObject {
         self.urls = files?.compactMap({ file in
             do {
                 let bookmarkData = try Data(contentsOf: file)
-                var isStale = false
-                let url = try URL(resolvingBookmarkData: bookmarkData, bookmarkDataIsStale: &isStale)
                 let uuid = file.lastPathComponent
-                
-                guard !isStale else {
-                    print("It's stale!!!")
-                    return nil
-                }
-                
+                guard let url = getBookmarkURL(bookmarkData: bookmarkData) else { return nil }
                 return (uuid, url)
             }
             catch let error {
@@ -88,5 +81,23 @@ class BookmarkController: ObservableObject {
                 return nil
             }
         }) ?? []
+    }
+    
+    func getBookmarkURL(bookmarkData: Data) -> URL? {
+        do {
+            var isStale = false
+            let url = try URL(resolvingBookmarkData: bookmarkData, bookmarkDataIsStale: &isStale)
+            
+            guard !isStale else {
+                print("Bookmark is stale")
+                return nil
+            }
+            
+            return url
+        }
+        catch let error {
+            print(error)
+            return nil
+        }
     }
 }
