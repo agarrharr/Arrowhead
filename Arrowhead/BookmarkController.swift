@@ -18,29 +18,29 @@ class BookmarkController: ObservableObject {
         }
     }
     
-    func addBookmark(for bookmarkURL: URL) {
-        guard bookmarkURL.startAccessingSecurityScopedResource() else {
+    func addBookmark(for url: URL) {
+        guard url.startAccessingSecurityScopedResource() else {
             // Handle the failure here.
             return
         }
             
         do {
             print("Make bookmark")
-            let bookmarkData = try bookmarkURL.bookmarkData(options: .minimalBookmark, includingResourceValuesForKeys: nil, relativeTo: nil)
+            let bookmarkData = try url.bookmarkData(options: .minimalBookmark, includingResourceValuesForKeys: nil, relativeTo: nil)
             
             print("Bookmark made", bookmarkData)
             
-            let (uuid, url) = getMyURLForBookmark()
-            try bookmarkData.write(to: url)
+            let (uuid, bookmarkFileURL) = getUUIDAndFileURLForBookmark()
+            try bookmarkData.write(to: bookmarkFileURL)
             
             withAnimation {
-                urls.append((uuid, bookmarkURL))
+                urls.append((uuid, url))
             }
         } catch {
             print("Error creating the bookmark")
         }
         
-        bookmarkURL.stopAccessingSecurityScopedResource()
+        url.stopAccessingSecurityScopedResource()
     }
     
     func removeBookmark(atOffsets offsets: IndexSet) {
@@ -59,11 +59,11 @@ class BookmarkController: ObservableObject {
         FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
     }
     
-    func getMyURLForBookmark() -> (uuid: String, url: URL) {
-        var url = getAppSandboxDirectory()
+    func getUUIDAndFileURLForBookmark() -> (uuid: String, url: URL) {
+        let sandboxDirectory = getAppSandboxDirectory()
         let uuid = UUID().uuidString
-        url = url.appendingPathComponent("\(uuid)")
-        return (uuid, url)
+        let bookmarkFileURL = sandboxDirectory.appendingPathComponent("\(uuid)")
+        return (uuid, bookmarkFileURL)
     }
     
     func getBookmarks() {
