@@ -12,7 +12,10 @@ class BookmarkController: ObservableObject {
     
     init(preview: Bool = false) {
         if preview {
-            urls = [("123", URL(string: "asdf/Test")!)]
+            urls = [
+                ("123", URL(string: "some/path/Notes")!),
+                ("124", URL(string: "some/path/Business")!),
+            ]
         } else {
             getBookmarks()
         }

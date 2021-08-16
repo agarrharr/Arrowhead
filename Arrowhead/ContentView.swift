@@ -27,14 +27,14 @@ struct ContentView: View {
                 Button {
                     showFilePicker = true
                 } label: {
-                    Label("Add Location", systemImage: "plus")
+                    Label("Add Folder", systemImage: "plus")
                 }
                 .sheet(isPresented: $showFilePicker) {
                     DocumentPicker()
                         .environmentObject(bookmarkController)
                 }
             }
-            .navigationTitle("Locations")
+            .navigationTitle("Folders")
             .listStyle(InsetGroupedListStyle())
         }
     }

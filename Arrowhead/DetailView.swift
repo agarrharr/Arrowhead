@@ -9,6 +9,7 @@ import SwiftUI
 
 struct DetailView: View {
     var url: URL
+    
     @State var urls: [URL] = []
     @EnvironmentObject var fileController: FileController
     
@@ -22,11 +23,15 @@ struct DetailView: View {
             urls = fileController.getContentsOfDirectory(url: url)
         }
         .navigationTitle(url.lastPathComponent)
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailView(url: URL(string: "some/url")!)
+        NavigationView {
+            DetailView(url: URL(string: "some/path/Notes")!)
+                .environmentObject(FileController(preview: true))
+        }
     }
 }
