@@ -9,8 +9,8 @@ import SwiftUI
 
 @main
 struct ArrowheadApp: App {
-    let bookmarkController = BookmarkController()
-    let fileController = FileController()
+    @StateObject var bookmarkController = BookmarkController()
+    @StateObject var fileController = FileController()
 
     var body: some Scene {
         WindowGroup {

@@ -22,25 +22,28 @@ class BookmarkController: ObservableObject {
     }
     
     func addBookmark(for url: URL) {
-        guard url.startAccessingSecurityScopedResource() else {
-            // Handle the failure here.
-            return
-        }
-        
         do {
-            let bookmarkData = try url.bookmarkData(options: .minimalBookmark, includingResourceValuesForKeys: nil, relativeTo: nil)
-            
-            let (uuid, bookmarkFileURL) = getUUIDAndFileURLForBookmark()
-            try bookmarkData.write(to: bookmarkFileURL)
-            
-            // I have to get the bookmark with this method or I won't have permission to access it
-            guard let resolvedURL = getBookmarkURL(bookmarkData: bookmarkData) else {
-                print("Error getting the newly created bookmark")
+            guard url.startAccessingSecurityScopedResource() else {
+                // Handle the failure here.
                 return
             }
             
+            let bookmarkData = try url.bookmarkData(options: .minimalBookmark, includingResourceValuesForKeys: nil, relativeTo: nil)
+            
+            let uuid = UUID().uuidString
+            let bookmarkFileURL = getAppSandboxDirectory().appendingPathComponent("\(uuid)")
+            
+            try bookmarkData.write(to: bookmarkFileURL)
+            
+            // I have to get the bookmark with this method or I won't have permission to access it
+//            guard let resolvedURL = getBookmarkURL(bookmarkData: bookmarkData) else {
+//                print("Error getting the newly created bookmark")
+//                return
+//            }
+            
             withAnimation {
-                urls.append((uuid, resolvedURL))
+//                urls.append((uuid, resolvedURL))
+                urls.append((uuid, url))
             }
             
         } catch {
@@ -61,13 +64,6 @@ class BookmarkController: ObservableObject {
     
     private func getAppSandboxDirectory() -> URL {
         FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-    }
-    
-    func getUUIDAndFileURLForBookmark() -> (uuid: String, url: URL) {
-        let sandboxDirectory = getAppSandboxDirectory()
-        let uuid = UUID().uuidString
-        let bookmarkFileURL = sandboxDirectory.appendingPathComponent("\(uuid)")
-        return (uuid, bookmarkFileURL)
     }
     
     func getBookmarks() {
