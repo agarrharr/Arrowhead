@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @State var showFilePicker = false
-    @State var urlSelection: URL?
+    
     @EnvironmentObject var bookmarkController: BookmarkController
 
     var body: some View {
@@ -17,11 +17,9 @@ struct ContentView: View {
             List {
                 Section {
                     ForEach(bookmarkController.urls, id: \.0) { uuid, url in
-                        NavigationLink(url.lastPathComponent, destination: DetailView(url: url), tag: url, selection: $urlSelection)
+                        NavigationLink(url.lastPathComponent, destination: DetailView(url: url))
                     }
-                    .onDelete(perform: { indexSet in
-                        bookmarkController.removeBookmark(atOffsets: indexSet)
-                    })
+                    .onDelete(perform: bookmarkController.removeBookmark)
                 }
 
                 Button {

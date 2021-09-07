@@ -53,7 +53,7 @@ class BookmarkController: ObservableObject {
         url.stopAccessingSecurityScopedResource()
     }
     
-    func removeBookmark(atOffsets offsets: IndexSet) {
+    func removeBookmark(at offsets: IndexSet) {
         let uuids = offsets.map { urls[$0].uuid }
         urls.remove(atOffsets: offsets)
         
