@@ -16,6 +16,8 @@
 		99E8CFDD26C1701E008CEFE2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99E8CFDC26C1701E008CEFE2 /* Assets.xcassets */; };
 		99E8CFE026C1701E008CEFE2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99E8CFDF26C1701E008CEFE2 /* Preview Assets.xcassets */; };
 		99EAE7C026E80023007C22AC /* TodoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99EAE7BF26E80023007C22AC /* TodoView.swift */; };
+		99EAE7C226E80882007C22AC /* FolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99EAE7C126E80882007C22AC /* FolderView.swift */; };
+		99EAE7C426E80D90007C22AC /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99EAE7C326E80D90007C22AC /* Model.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		99E8CFDF26C1701E008CEFE2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		99E8CFE626C1701F008CEFE2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		99EAE7BF26E80023007C22AC /* TodoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoView.swift; sourceTree = "<group>"; };
+		99EAE7C126E80882007C22AC /* FolderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderView.swift; sourceTree = "<group>"; };
+		99EAE7C326E80D90007C22AC /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +74,7 @@
 				994C201C26C1C8190029E6DC /* BookmarkController.swift */,
 				994C202026C1D6D80029E6DC /* FileController.swift */,
 				994C202226C2E8980029E6DC /* DocumentPicker.swift */,
+				99EAE7C326E80D90007C22AC /* Model.swift */,
 			);
 			path = Arrowhead;
 			sourceTree = "<group>";
@@ -88,6 +93,7 @@
 				99E8CFDA26C1701C008CEFE2 /* ContentView.swift */,
 				994C201E26C1D4EA0029E6DC /* DetailView.swift */,
 				99EAE7BF26E80023007C22AC /* TodoView.swift */,
+				99EAE7C126E80882007C22AC /* FolderView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -161,6 +167,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99EAE7C426E80D90007C22AC /* Model.swift in Sources */,
+				99EAE7C226E80882007C22AC /* FolderView.swift in Sources */,
 				994C201D26C1C81A0029E6DC /* BookmarkController.swift in Sources */,
 				994C201F26C1D4EA0029E6DC /* DetailView.swift in Sources */,
 				99EAE7C026E80023007C22AC /* TodoView.swift in Sources */,

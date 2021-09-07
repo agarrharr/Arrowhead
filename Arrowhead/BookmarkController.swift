@@ -8,11 +8,11 @@
 import SwiftUI
 
 class BookmarkController: ObservableObject {
-    @Published var urls: [(uuid: String, url: URL)] = []
+    @Published var bookmarks: [(uuid: String, url: URL)] = []
     
     init(preview: Bool = false) {
         if preview {
-            urls = [
+            bookmarks = [
                 ("123", URL(string: "some/path/Notes")!),
                 ("124", URL(string: "some/path/Business")!),
             ]
@@ -43,7 +43,7 @@ class BookmarkController: ObservableObject {
             
             withAnimation {
 //                urls.append((uuid, resolvedURL))
-                urls.append((uuid, url))
+                bookmarks.append((uuid, url))
             }
             
         } catch {
@@ -54,8 +54,8 @@ class BookmarkController: ObservableObject {
     }
     
     func removeBookmark(at offsets: IndexSet) {
-        let uuids = offsets.map { urls[$0].uuid }
-        urls.remove(atOffsets: offsets)
+        let uuids = offsets.map { bookmarks[$0].uuid }
+        bookmarks.remove(atOffsets: offsets)
         
         uuids.forEach { uuid in
             try? FileManager.default.removeItem(at: getAppSandboxDirectory().appendingPathComponent("\(uuid)"))
@@ -69,7 +69,7 @@ class BookmarkController: ObservableObject {
     func getBookmarks() {
         let files = try? FileManager.default.contentsOfDirectory(at: getAppSandboxDirectory(), includingPropertiesForKeys: nil)
         
-        self.urls = files?.compactMap({ file in
+        self.bookmarks = files?.compactMap({ file in
             do {
                 let bookmarkData = try Data(contentsOf: file)
                 let uuid = file.lastPathComponent

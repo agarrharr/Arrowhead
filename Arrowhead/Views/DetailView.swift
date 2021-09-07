@@ -23,6 +23,7 @@ struct DetailView: View {
                 }
             }
         }
+        .listStyle(SidebarListStyle())
         .onAppear {
             projects = fileController.getTodosFromDirectory(url: url)
         }

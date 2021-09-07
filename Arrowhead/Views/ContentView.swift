@@ -8,32 +8,18 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var showFilePicker = false
-    
     @EnvironmentObject var bookmarkController: BookmarkController
-
+    @EnvironmentObject var model: Model
+    
     var body: some View {
         NavigationView {
-            List {
-                Section {
-                    ForEach(bookmarkController.urls, id: \.0) { uuid, url in
-                        NavigationLink(url.lastPathComponent, destination: DetailView(url: url))
-                    }
-                    .onDelete(perform: bookmarkController.removeBookmark)
-                }
-
-                Button {
-                    showFilePicker = true
-                } label: {
-                    Label("Add Folder", systemImage: "plus")
-                }
-                .sheet(isPresented: $showFilePicker) {
-                    DocumentPicker()
-                        .environmentObject(bookmarkController)
-                }
-            }
-            .navigationTitle("Folders")
-            .listStyle(InsetGroupedListStyle())
+            FolderView()
+                .navigationBarItems(leading: Image(systemName: "gear"))
+                .listStyle(InsetGroupedListStyle())
+        }
+        .onAppear {
+            // TODO: Set the active folder to the last one chosen
+            model.activeFolderUUID = bookmarkController.bookmarks[0].uuid
         }
     }
 }

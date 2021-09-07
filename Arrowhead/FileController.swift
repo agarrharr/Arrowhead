@@ -71,6 +71,19 @@ class FileController: ObservableObject {
                             title: "Make it work",
                             tags: [])
                     ]
+                ),
+                Project(
+                    name: "Finish livingroom",
+                    todos: [
+                        Todo(
+                            id: UUID(),
+                            fileURL: URL(string: "some/path/Home")!,
+                            fileName: "Finish livingroom",
+                            lineNumber: 1,
+                            completed: false,
+                            title: "Paint ceiling",
+                            tags: [])
+                    ]
                 )
             ]
         }
