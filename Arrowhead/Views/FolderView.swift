@@ -15,45 +15,46 @@ struct FolderView: View {
     @State private var editMode = EditMode.inactive
     
     var body: some View {
-        List {
+        Section(
+            header: Text("Folders")
+                .fontWeight(.bold)
+                .textCase(.none)
+                .font(.title2)
+                .foregroundColor(.black)
+        ) {
             ForEach(bookmarkController.bookmarks, id: \.0) { uuid, url in
                 NavigationLink(
                     destination: DetailView(url: url),
                     isActive: isEqual(self.$model.activeFolderUUID, uuid, inequalValue: ""),
                     label: {
-                        HStack {
+                        Label {
+                            Text(url.lastPathComponent)
+                        } icon: {
                             Image(systemName: "folder")
                                 .foregroundColor(.accentColor)
-                            Text(url.lastPathComponent)
                         }
                     })
             }
             .onDelete(perform: bookmarkController.removeBookmark)
-
-//            if editMode == EditMode.active || bookmarkController.bookmarks.count == 0 {
-                // TODO: Fix bug where I can't tap on this button
-                Button {
-                    print("tap")
-                    showFilePicker = true
-                } label: {
-                    Label("Add Folder", systemImage: "plus")
-                }
-                .sheet(isPresented: $showFilePicker) {
-                    DocumentPicker()
-                        .environmentObject(bookmarkController)
-                }
-//            }
+            
+            Button {
+                print("tap")
+                showFilePicker = true
+            } label: {
+                Label("Add Folder", systemImage: "plus")
+            }
+            .sheet(isPresented: $showFilePicker) {
+                DocumentPicker()
+                    .environmentObject(bookmarkController)
+            }
         }
-        .navigationTitle("Folders")
-        .navigationBarItems(trailing: EditButton())
-        .environment(\.editMode, $editMode)
-        .listStyle(GroupedListStyle())
+        //.headerProminence(.increased) // TODO: iOS 15 only
     }
 }
 
 struct FolderView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationView {
+        List {
             FolderView()
                 .environmentObject(BookmarkController(preview: true))
                 .environmentObject(Model())

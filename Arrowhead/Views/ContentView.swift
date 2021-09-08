@@ -13,13 +13,12 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView {
-            FolderView()
-                .navigationBarItems(leading: Image(systemName: "gear"))
-                .listStyle(InsetGroupedListStyle())
+            OverviewView()
         }
         .onAppear {
-            // TODO: Set the active folder to the last one chosen
-            model.activeFolderUUID = bookmarkController.bookmarks[0].uuid
+            // if bookmarkController.bookmarks.count > 0 {
+            //     model.activeFolderUUID = bookmarkController.bookmarks[0].uuid
+            // }
         }
     }
 }
