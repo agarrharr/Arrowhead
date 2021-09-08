@@ -30,8 +30,10 @@ struct FolderView: View {
             }
             .onDelete(perform: bookmarkController.removeBookmark)
 
-            if editMode == EditMode.active || bookmarkController.bookmarks.count == 0 {
+//            if editMode == EditMode.active || bookmarkController.bookmarks.count == 0 {
+                // TODO: Fix bug where I can't tap on this button
                 Button {
+                    print("tap")
                     showFilePicker = true
                 } label: {
                     Label("Add Folder", systemImage: "plus")
@@ -40,7 +42,7 @@ struct FolderView: View {
                     DocumentPicker()
                         .environmentObject(bookmarkController)
                 }
-            }
+//            }
         }
         .navigationTitle("Folders")
         .navigationBarItems(trailing: EditButton())
