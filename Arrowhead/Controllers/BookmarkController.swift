@@ -36,14 +36,13 @@ class BookmarkController: ObservableObject {
             try bookmarkData.write(to: bookmarkFileURL)
             
             // I have to get the bookmark with this method or I won't have permission to access it
-//            guard let resolvedURL = getBookmarkURL(bookmarkData: bookmarkData) else {
-//                print("Error getting the newly created bookmark")
-//                return
-//            }
+            guard let resolvedURL = getBookmarkURL(bookmarkData: bookmarkData) else {
+                print("Error getting the newly created bookmark")
+                return
+            }
             
             withAnimation {
-//                urls.append((uuid, resolvedURL))
-                bookmarks.append((uuid, url))
+                bookmarks.append((uuid, resolvedURL))
             }
             
         } catch {
