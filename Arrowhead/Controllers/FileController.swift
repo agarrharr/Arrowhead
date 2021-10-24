@@ -90,11 +90,11 @@ class FileController: ObservableObject {
         
         var projects: [Project] = []
         
-        let files = getAllFilesInDirectory(url: url)
+        let urls = getAllFilesInDirectory(url: url)
         
-        files.forEach { file in
+        urls.forEach { url in
             var lines: [String] = []
-            if let contents = try? String(contentsOf: file) {
+            if let contents = try? String(contentsOf: url) {
                 lines = contents.components(separatedBy: "\n")
             }
             
@@ -112,7 +112,7 @@ class FileController: ObservableObject {
                 if line != "" {
                     if let task = getTask(string: line) {
                         todos.append(
-                            Todo(id: UUID(), fileURL: file, fileName: file.lastPathComponent, lineNumber: lineNumber, completed: task.isCompleted, title: task.title, tags: task.tags, dueDate: task.dueDate, doneDate: task.doneDate)
+                            Todo(id: UUID(), fileURL: url, fileName: url.lastPathComponent, lineNumber: lineNumber, completed: task.isCompleted, title: task.title, tags: task.tags, dueDate: task.dueDate, doneDate: task.doneDate)
 
                         )
                     }
@@ -121,7 +121,7 @@ class FileController: ObservableObject {
                 lineNumber += 1
             }
             if todos.count > 0 {
-                projects.append(Project(name: file.lastPathComponent, todos: todos))
+                projects.append(Project(name: url.lastPathComponent, todos: todos))
             }
         }
         

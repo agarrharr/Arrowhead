@@ -14,6 +14,7 @@
 		99613D5626F39516008D0FA3 /* PerspectiveTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99613D5326F39516008D0FA3 /* PerspectiveTileView.swift */; };
 		99613D5726F39516008D0FA3 /* OverviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99613D5426F39516008D0FA3 /* OverviewView.swift */; };
 		99613D5826F39516008D0FA3 /* PerspectivesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99613D5526F39516008D0FA3 /* PerspectivesView.swift */; };
+		99613D6226F39CDE008D0FA3 /* FileControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99613D6126F39CDE008D0FA3 /* FileControllerTests.swift */; };
 		99E8CFD926C1701C008CEFE2 /* ArrowheadApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E8CFD826C1701C008CEFE2 /* ArrowheadApp.swift */; };
 		99E8CFDB26C1701C008CEFE2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E8CFDA26C1701C008CEFE2 /* ContentView.swift */; };
 		99E8CFDD26C1701E008CEFE2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99E8CFDC26C1701E008CEFE2 /* Assets.xcassets */; };
@@ -23,6 +24,16 @@
 		99EAE7C426E80D90007C22AC /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99EAE7C326E80D90007C22AC /* Model.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		99613D6326F39CDE008D0FA3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 99E8CFCD26C1701C008CEFE2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 99E8CFD426C1701C008CEFE2;
+			remoteInfo = Arrowhead;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		994C201C26C1C8190029E6DC /* BookmarkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkController.swift; sourceTree = "<group>"; };
 		994C201E26C1D4EA0029E6DC /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
@@ -31,6 +42,8 @@
 		99613D5326F39516008D0FA3 /* PerspectiveTileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerspectiveTileView.swift; sourceTree = "<group>"; };
 		99613D5426F39516008D0FA3 /* OverviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverviewView.swift; sourceTree = "<group>"; };
 		99613D5526F39516008D0FA3 /* PerspectivesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerspectivesView.swift; sourceTree = "<group>"; };
+		99613D5F26F39CDE008D0FA3 /* ArrowheadTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ArrowheadTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		99613D6126F39CDE008D0FA3 /* FileControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileControllerTests.swift; sourceTree = "<group>"; };
 		99E8CFD526C1701C008CEFE2 /* Arrowhead.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Arrowhead.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		99E8CFD826C1701C008CEFE2 /* ArrowheadApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrowheadApp.swift; sourceTree = "<group>"; };
 		99E8CFDA26C1701C008CEFE2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -43,6 +56,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		99613D5C26F39CDE008D0FA3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		99E8CFD226C1701C008CEFE2 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -70,10 +90,19 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
+		99613D6026F39CDE008D0FA3 /* ArrowheadTests */ = {
+			isa = PBXGroup;
+			children = (
+				99613D6126F39CDE008D0FA3 /* FileControllerTests.swift */,
+			);
+			path = ArrowheadTests;
+			sourceTree = "<group>";
+		};
 		99E8CFCC26C1701C008CEFE2 = {
 			isa = PBXGroup;
 			children = (
 				99E8CFD726C1701C008CEFE2 /* Arrowhead */,
+				99613D6026F39CDE008D0FA3 /* ArrowheadTests */,
 				99E8CFD626C1701C008CEFE2 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -82,6 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				99E8CFD526C1701C008CEFE2 /* Arrowhead.app */,
+				99613D5F26F39CDE008D0FA3 /* ArrowheadTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -126,6 +156,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		99613D5E26F39CDE008D0FA3 /* ArrowheadTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 99613D6526F39CDE008D0FA3 /* Build configuration list for PBXNativeTarget "ArrowheadTests" */;
+			buildPhases = (
+				99613D5B26F39CDE008D0FA3 /* Sources */,
+				99613D5C26F39CDE008D0FA3 /* Frameworks */,
+				99613D5D26F39CDE008D0FA3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				99613D6426F39CDE008D0FA3 /* PBXTargetDependency */,
+			);
+			name = ArrowheadTests;
+			productName = ArrowheadTests;
+			productReference = 99613D5F26F39CDE008D0FA3 /* ArrowheadTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		99E8CFD426C1701C008CEFE2 /* Arrowhead */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 99E8CFE926C1701F008CEFE2 /* Build configuration list for PBXNativeTarget "Arrowhead" */;
@@ -149,9 +197,13 @@
 		99E8CFCD26C1701C008CEFE2 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1250;
+				LastSwiftUpdateCheck = 1300;
 				LastUpgradeCheck = 1250;
 				TargetAttributes = {
+					99613D5E26F39CDE008D0FA3 = {
+						CreatedOnToolsVersion = 13.0;
+						TestTargetID = 99E8CFD426C1701C008CEFE2;
+					};
 					99E8CFD426C1701C008CEFE2 = {
 						CreatedOnToolsVersion = 12.5.1;
 					};
@@ -171,11 +223,19 @@
 			projectRoot = "";
 			targets = (
 				99E8CFD426C1701C008CEFE2 /* Arrowhead */,
+				99613D5E26F39CDE008D0FA3 /* ArrowheadTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		99613D5D26F39CDE008D0FA3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		99E8CFD326C1701C008CEFE2 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -188,6 +248,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		99613D5B26F39CDE008D0FA3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				99613D6226F39CDE008D0FA3 /* FileControllerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		99E8CFD126C1701C008CEFE2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -209,7 +277,65 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		99613D6426F39CDE008D0FA3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 99E8CFD426C1701C008CEFE2 /* Arrowhead */;
+			targetProxy = 99613D6326F39CDE008D0FA3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		99613D6626F39CDE008D0FA3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 47C966XSTJ;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.garrett-harris.adam.ArrowheadTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Arrowhead.app/Arrowhead";
+			};
+			name = Debug;
+		};
+		99613D6726F39CDE008D0FA3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 47C966XSTJ;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.garrett-harris.adam.ArrowheadTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Arrowhead.app/Arrowhead";
+			};
+			name = Release;
+		};
 		99E8CFE726C1701F008CEFE2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -373,6 +499,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		99613D6526F39CDE008D0FA3 /* Build configuration list for PBXNativeTarget "ArrowheadTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				99613D6626F39CDE008D0FA3 /* Debug */,
+				99613D6726F39CDE008D0FA3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		99E8CFD026C1701C008CEFE2 /* Build configuration list for PBXProject "Arrowhead" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
