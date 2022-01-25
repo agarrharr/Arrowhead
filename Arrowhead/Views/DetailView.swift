@@ -9,13 +9,11 @@ import SwiftUI
 
 struct DetailView: View {
     var url: URL
-    @State private var projects: [Project] = []
-    
     @EnvironmentObject var fileController: FileController
     
     var body: some View {
         List {
-            ForEach(projects, id: \.self) { project in
+            ForEach(fileController.projects, id: \.self) { project in
                 Section(header: Text(project.name)) {
                     ForEach(project.todos, id: \.id) { todo in
                         TodoView(todo: todo)
@@ -25,8 +23,7 @@ struct DetailView: View {
         }
         .listStyle(SidebarListStyle())
         .onAppear {
-            // TODO: save this in the FileController
-            projects = fileController.getTodosFromDirectory(url: url)
+            fileController.loadProjectsFromDirectory(url: url)
         }
         .navigationTitle(url.lastPathComponent)
         .navigationBarTitleDisplayMode(.inline)

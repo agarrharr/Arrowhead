@@ -12,6 +12,7 @@ struct Project: Hashable {
         lhs.name == rhs.name
     }
     
+    var id: UUID
     var name: String
     var todos: [Todo]
 }
@@ -22,6 +23,7 @@ struct Todo: Hashable {
     }
     
     var id: UUID
+    var projectID: UUID
     var fileURL: URL
     var fileName: String
     var lineNumber: Int
@@ -41,18 +43,22 @@ struct Note: Hashable {
 class FileController: ObservableObject {
     private var isPreview: Bool
     
+    @Published var projects: [Project] = []
+    
     init(preview: Bool = false) {
         self.isPreview = preview
     }
     
-    func getTodosFromDirectory(url: URL) -> [Project] {
+    func loadProjectsFromDirectory(url: URL) {
         if isPreview {
-            return [
+            self.projects = [
                 Project(
+                    id: UUID(uuidString: "123")!,
                     name: "Project 1",
                     todos:[
                         Todo(
                             id: UUID(),
+                            projectID: UUID(uuidString: "123")!,
                             fileURL: URL(string: "some/path/Home")!,
                             fileName: "Project 1",
                             lineNumber: 1,
@@ -64,6 +70,7 @@ class FileController: ObservableObject {
                         ,
                         Todo(
                             id: UUID(),
+                            projectID: UUID(uuidString: "123")!,
                             fileURL: URL(string: "some/path/Home")!,
                             fileName: "Project 1",
                             lineNumber: 1,
@@ -73,10 +80,12 @@ class FileController: ObservableObject {
                     ]
                 ),
                 Project(
+                    id: UUID(uuidString: "123")!,
                     name: "Finish livingroom",
                     todos: [
                         Todo(
                             id: UUID(),
+                            projectID: UUID(uuidString: "123")!,
                             fileURL: URL(string: "some/path/Home")!,
                             fileName: "Finish livingroom",
                             lineNumber: 1,
@@ -98,6 +107,8 @@ class FileController: ObservableObject {
                 lines = contents.components(separatedBy: "\n")
             }
             
+            let projectID = UUID()
+            
             var lineNumber = 1
             var todos: [Todo] = []
             lines.forEach { line in
@@ -111,7 +122,7 @@ class FileController: ObservableObject {
                 if line != "" {
                     if let task = getTask(string: line) {
                         todos.append(
-                            Todo(id: UUID(), fileURL: url, fileName: url.lastPathComponent, lineNumber: lineNumber, completed: task.isCompleted, title: task.title, tags: task.tags, dueDate: task.dueDate, doneDate: task.doneDate)
+                            Todo(id: UUID(), projectID: projectID, fileURL: url, fileName: url.lastPathComponent, lineNumber: lineNumber, completed: task.isCompleted, title: task.title, tags: task.tags, dueDate: task.dueDate, doneDate: task.doneDate)
 
                         )
                     }
@@ -120,11 +131,11 @@ class FileController: ObservableObject {
                 lineNumber += 1
             }
             if todos.count > 0 {
-                projects.append(Project(name: url.lastPathComponent, todos: todos))
+                projects.append(Project(id: projectID, name: url.lastPathComponent, todos: todos))
             }
         }
         
-        return projects
+        self.projects = projects
     }
     
     func getTask(string: String) -> (title: String, isCompleted: Bool, tags: [String], dueDate: String?, doneDate: String?)? {
@@ -248,12 +259,9 @@ class FileController: ObservableObject {
     }
     
     public func toggleTaskCompletion(todo: Todo) {
-        // TODO: Allow the user to check off items and actually change the text file
-        print("Tap on: \(todo.title), completed: \(todo.completed)")
-        // TODO: change the file
         var lines: [String] = []
+        
         if let contents = try? String(contentsOf: todo.fileURL) {
-
             lines = contents.components(separatedBy: "\n")
         }
         
@@ -267,9 +275,12 @@ class FileController: ObservableObject {
             line = regex.stringByReplacingMatches(in: line, options: [], range: NSRange(0..<line.utf16.count), withTemplate: "- [x] ")
         }
 
-        
         lines[todo.lineNumber - 1] = line
         try? lines.joined(separator: "\n").write(to: todo.fileURL, atomically: true, encoding: .utf8)
-        // Reload the file?
+        
+        let projectIndex = self.projects.firstIndex(where: { $0.id == todo.projectID })
+        let taskIndex = self.projects[projectIndex ?? -1].todos.firstIndex(where: { $0.id == todo.id })
+        
+        self.projects[projectIndex ?? -1].todos[taskIndex ?? -1].completed.toggle()
     }
 }

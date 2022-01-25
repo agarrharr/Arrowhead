@@ -53,7 +53,7 @@ struct TodoView: View {
 
 struct TodoView_Previews: PreviewProvider {
     static var previews: some View {
-        let todo1 = Todo(id: UUID(), fileURL: URL(string: "path/to/file")!, fileName: "Project 1", lineNumber: 1, completed: false, title: "Take out the trash", tags: ["#adam", "#next"], dueDate: "📅 2021-09-07", doneDate: nil, subTasks: nil)
+        let todo1 = Todo(id: UUID(), projectID: UUID(), fileURL: URL(string: "path/to/file")!, fileName: "Project 1", lineNumber: 1, completed: false, title: "Take out the trash", tags: ["#adam", "#next"], dueDate: "📅 2021-09-07", doneDate: nil, subTasks: nil)
         
         TodoView(todo: todo1)
             .environmentObject(FileController(preview: true))
