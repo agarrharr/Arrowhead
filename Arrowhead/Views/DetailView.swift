@@ -25,6 +25,7 @@ struct DetailView: View {
         }
         .listStyle(SidebarListStyle())
         .onAppear {
+            // TODO: save this in the FileController
             projects = fileController.getTodosFromDirectory(url: url)
         }
         .navigationTitle(url.lastPathComponent)

@@ -102,12 +102,11 @@ class FileController: ObservableObject {
             var todos: [Todo] = []
             lines.forEach { line in
                 // TODO: Warn the user if the file contains mixed tabs and spaces
-                // TODO: extract hashtags
-                // TODO: extract dates
                 // TODO: Ignore empty lines
-                // TODO: nest tasks and notes
-                // TODO: Pull out headers and use those
-                // Question: Should files within user-defined projects folders show up even if there are no tasks?
+                // TODO: Nest tasks and notes
+                // TODO: Pull out headers and show those in the nesting
+                // TODO: Add user-defined project folders
+                // Question: Files in user-defined project folders should show up even if there are no tasks
                 
                 if line != "" {
                     if let task = getTask(string: line) {
@@ -151,17 +150,17 @@ class FileController: ObservableObject {
         return nil
     }
     
-    func getIndentationLevel(string: String) -> Int {
-        let regex = try! NSRegularExpression(pattern: "^(\\s+)")
-        let matches = regex.matches(in: string, range: NSRange(location: 0, length: string.utf16.count))
-
-        if matches.count > 0 {
-            let nsRange = matches[0].range(at: 1)
-            let range = Range(nsRange, in: string)!
-            return string[range].count
-        }
-        return 0
-    }
+//    func getIndentationLevel(string: String) -> Int {
+//        let regex = try! NSRegularExpression(pattern: "^(\\s+)")
+//        let matches = regex.matches(in: string, range: NSRange(location: 0, length: string.utf16.count))
+//
+//        if matches.count > 0 {
+//            let nsRange = matches[0].range(at: 1)
+//            let range = Range(nsRange, in: string)!
+//            return string[range].count
+//        }
+//        return 0
+//    }
     
     func findHashtags(string: String) -> (newString: String, tags: [String]) {
         var hashtags:[String] = []
@@ -203,22 +202,22 @@ class FileController: ObservableObject {
         return (newString: newString, date: dates.count > 0 ? dates[0] : nil)
     }
     
-    func getContentsOfDirectory(url: URL) -> [URL] {
-        if isPreview {
-            return [
-                URL(string: "some/path/Home")!,
-                URL(string: "some/path/Project%201")!,
-                URL(string: "some/path/Project%202")!,
-                URL(string: "some/path/Project%202")!,
-            ]
-        }
-        do {
-            return try FileManager.default.contentsOfDirectory(at: url, includingPropertiesForKeys: nil)
-        } catch {
-            print(error)
-            return []
-        }
-    }
+//    func getContentsOfDirectory(url: URL) -> [URL] {
+//        if isPreview {
+//            return [
+//                URL(string: "some/path/Home")!,
+//                URL(string: "some/path/Project%201")!,
+//                URL(string: "some/path/Project%202")!,
+//                URL(string: "some/path/Project%202")!,
+//            ]
+//        }
+//        do {
+//            return try FileManager.default.contentsOfDirectory(at: url, includingPropertiesForKeys: nil)
+//        } catch {
+//            print(error)
+//            return []
+//        }
+//    }
     
     func getAllFilesInDirectory(url: URL) -> [URL] {
         if isPreview {
@@ -246,5 +245,31 @@ class FileController: ObservableObject {
             }
         }
         return urls
+    }
+    
+    public func toggleTaskCompletion(todo: Todo) {
+        // TODO: Allow the user to check off items and actually change the text file
+        print("Tap on: \(todo.title), completed: \(todo.completed)")
+        // TODO: change the file
+        var lines: [String] = []
+        if let contents = try? String(contentsOf: todo.fileURL) {
+
+            lines = contents.components(separatedBy: "\n")
+        }
+        
+        var line = lines[todo.lineNumber - 1]
+        
+        if (todo.completed) {
+            let regex = try! NSRegularExpression(pattern: #"(^\s*[-*]{1} \[[xX]{1}\] )"#)
+            line = regex.stringByReplacingMatches(in: line, options: [], range: NSRange(0..<line.utf16.count), withTemplate: "- [ ] ")
+        } else {
+            let regex = try! NSRegularExpression(pattern: #"(^\s*[-*]{1} \[ \] )"#)
+            line = regex.stringByReplacingMatches(in: line, options: [], range: NSRange(0..<line.utf16.count), withTemplate: "- [x] ")
+        }
+
+        
+        lines[todo.lineNumber - 1] = line
+        try? lines.joined(separator: "\n").write(to: todo.fileURL, atomically: true, encoding: .utf8)
+        // Reload the file?
     }
 }

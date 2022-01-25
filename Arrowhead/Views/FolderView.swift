@@ -38,7 +38,6 @@ struct FolderView: View {
             .onDelete(perform: bookmarkController.removeBookmark)
             
             Button {
-                print("tap")
                 showFilePicker = true
             } label: {
                 Label("Add Folder", systemImage: "plus")

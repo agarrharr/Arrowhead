@@ -10,10 +10,15 @@ import SwiftUI
 struct TodoView: View {
     @State var todo: Todo
     
+    @EnvironmentObject var fileController: FileController
+    
     var body: some View {
         VStack {
             HStack {
                 Image(systemName: todo.completed ? "checkmark.circle.fill" : "circle")
+                    .onTapGesture {
+                        fileController.toggleTaskCompletion(todo: todo)
+                    }
                 Text(todo.title)
                 Spacer()
             }
@@ -51,6 +56,7 @@ struct TodoView_Previews: PreviewProvider {
         let todo1 = Todo(id: UUID(), fileURL: URL(string: "path/to/file")!, fileName: "Project 1", lineNumber: 1, completed: false, title: "Take out the trash", tags: ["#adam", "#next"], dueDate: "📅 2021-09-07", doneDate: nil, subTasks: nil)
         
         TodoView(todo: todo1)
+            .environmentObject(FileController(preview: true))
             .preferredColorScheme(.dark)
     }
 }
