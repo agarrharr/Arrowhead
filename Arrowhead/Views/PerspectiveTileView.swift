@@ -1,10 +1,3 @@
-//
-//  PerspectiveTileView.swift
-//  Arrowhead
-//
-//  Created by Adam Garrett-Harris on 9/8/21.
-//
-
 import SwiftUI
 
 struct PerspectiveTileView: View {

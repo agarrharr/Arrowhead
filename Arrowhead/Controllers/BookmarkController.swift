@@ -1,10 +1,3 @@
-//
-//  BookmarkController.swift
-//  Arrowhead
-//
-//  Created by Adam Garrett-Harris on 8/9/21.
-//
-
 import SwiftUI
 
 class BookmarkController: ObservableObject {
@@ -24,7 +17,7 @@ class BookmarkController: ObservableObject {
     func addBookmark(for url: URL) {
         do {
             guard url.startAccessingSecurityScopedResource() else {
-                // Handle the failure here.
+                // TODO: Handle the failure here.
                 return
             }
             
@@ -35,7 +28,7 @@ class BookmarkController: ObservableObject {
             
             try bookmarkData.write(to: bookmarkFileURL)
             
-            // I have to get the bookmark with this method or I won't have permission to access it
+            // Get the bookmark with this method or I won't have permission to access it
             guard let resolvedURL = getBookmarkURL(bookmarkData: bookmarkData) else {
                 print("Error getting the newly created bookmark")
                 return

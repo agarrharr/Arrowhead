@@ -1,10 +1,3 @@
-//
-//  DocumentPicker.swift
-//  Arrowhead
-//
-//  Created by Adam Garrett-Harris on 8/10/21.
-//
-
 import SwiftUI
 
 struct DocumentPicker: UIViewControllerRepresentable {
@@ -18,7 +11,7 @@ struct DocumentPicker: UIViewControllerRepresentable {
         let documentPicker =
             UIDocumentPickerViewController(forOpeningContentTypes: [.folder])
         documentPicker.delegate = context.coordinator
-        // documentPicker.directoryURL = startingDirectory
+        
         return documentPicker
     }
     

@@ -1,10 +1,3 @@
-//
-//  FileController.swift
-//  Arrowhead
-//
-//  Created by Adam Garrett-Harris on 8/9/21.
-//
-
 import Foundation
 
 struct Project: Hashable {
@@ -116,8 +109,6 @@ class FileController: ObservableObject {
                 // TODO: Ignore empty lines
                 // TODO: Nest tasks and notes
                 // TODO: Pull out headers and show those in the nesting
-                // TODO: Add user-defined project folders
-                // Question: Files in user-defined project folders should show up even if there are no tasks
                 
                 if line != "" {
                     if let task = getTask(string: line) {
@@ -161,18 +152,6 @@ class FileController: ObservableObject {
         return nil
     }
     
-//    func getIndentationLevel(string: String) -> Int {
-//        let regex = try! NSRegularExpression(pattern: "^(\\s+)")
-//        let matches = regex.matches(in: string, range: NSRange(location: 0, length: string.utf16.count))
-//
-//        if matches.count > 0 {
-//            let nsRange = matches[0].range(at: 1)
-//            let range = Range(nsRange, in: string)!
-//            return string[range].count
-//        }
-//        return 0
-//    }
-    
     func findHashtags(string: String) -> (newString: String, tags: [String]) {
         var hashtags:[String] = []
         var newString: String = string
@@ -212,23 +191,6 @@ class FileController: ObservableObject {
         
         return (newString: newString, date: dates.count > 0 ? dates[0] : nil)
     }
-    
-//    func getContentsOfDirectory(url: URL) -> [URL] {
-//        if isPreview {
-//            return [
-//                URL(string: "some/path/Home")!,
-//                URL(string: "some/path/Project%201")!,
-//                URL(string: "some/path/Project%202")!,
-//                URL(string: "some/path/Project%202")!,
-//            ]
-//        }
-//        do {
-//            return try FileManager.default.contentsOfDirectory(at: url, includingPropertiesForKeys: nil)
-//        } catch {
-//            print(error)
-//            return []
-//        }
-//    }
     
     func getAllFilesInDirectory(url: URL) -> [URL] {
         if isPreview {
@@ -280,7 +242,6 @@ class FileController: ObservableObject {
         
         let projectIndex = self.projects.firstIndex(where: { $0.id == todo.projectID })
         let taskIndex = self.projects[projectIndex ?? -1].todos.firstIndex(where: { $0.id == todo.id })
-        
         self.projects[projectIndex ?? -1].todos[taskIndex ?? -1].completed.toggle()
     }
 }

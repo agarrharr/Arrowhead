@@ -1,10 +1,3 @@
-//
-//  TodoView.swift
-//  Arrowhead
-//
-//  Created by Adam Garrett-Harris on 9/7/21.
-//
-
 import SwiftUI
 
 struct TodoView: View {
