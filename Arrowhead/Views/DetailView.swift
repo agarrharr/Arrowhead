@@ -27,7 +27,7 @@ struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             DetailView(url: URL(string: "some/path/Notes")!)
-                .environmentObject(FileController(preview: true))
+                .environmentObject(FileController())
         }
         .preferredColorScheme(.dark)
     }
