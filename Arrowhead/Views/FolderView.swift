@@ -16,17 +16,11 @@ struct FolderView: View {
                 .foregroundColor(.black)
         ) {
             ForEach(bookmarkController.bookmarks, id: \.0) { uuid, url in
-                NavigationLink(
-                    destination: DetailView(url: url),
-                    isActive: isEqual(self.$model.activeFolderUUID, uuid, inequalValue: ""),
-                    label: {
-                        Label {
-                            Text(url.lastPathComponent)
-                        } icon: {
-                            Image(systemName: "folder")
-                                .foregroundColor(.accentColor)
-                        }
-                    })
+                HStack {
+                    Image(systemName: "folder")
+                        .foregroundColor(.accentColor)
+                    Text(url.lastPathComponent)
+                }
             }
             .onDelete(perform: bookmarkController.removeBookmark)
             
@@ -52,13 +46,4 @@ struct FolderView_Previews: PreviewProvider {
                 .environmentObject(Model())
         }
     }
-}
-
-// Returns a Binding that is true if the value of `binding` equals `value`.
-// If the value of the resulting binding is set, the original binding is set to value/inEqualValue.
-public func isEqual<T: Equatable>(_ binding: Binding<T>, _ value: T, inequalValue: T) -> Binding<Bool> {
-    Binding(
-        get: { binding.wrappedValue == value },
-        set: { newValue in binding.wrappedValue = newValue ? value : inequalValue }
-    )
 }

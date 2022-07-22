@@ -1,17 +1,39 @@
 import SwiftUI
 
 struct OverviewView: View {
-    @EnvironmentObject var model: Model
+    @State private var showSettings = false
+    
+    @EnvironmentObject var bookmarkController: BookmarkController
     
     var body: some View {
         List {
-            PerspectivesView()
-            FolderView()
+            NavigationLink {
+                AllTasksView()
+            } label: {
+                Text("All Tasks")
+            }
+            ForEach(bookmarkController.bookmarks, id: \.uuid) { bookmark in
+                NavigationLink {
+                    AllTasksView(url: bookmark.url)
+                } label: {
+                    Text(bookmark.url.deletingPathExtension().lastPathComponent)
+                }
+            }
         }
-        .navigationBarItems(leading: Image(systemName: "gear"))
+        .toolbar{
+            ToolbarItem(placement: .navigationBarLeading) {
+                Image(systemName: "gear")
+                    .onTapGesture {
+                      showSettings = true
+                    }
+            }
+        }
         .listStyle(InsetGroupedListStyle())
         .navigationBarTitle("")
         .navigationBarTitleDisplayMode(.inline)
+        .sheet(isPresented: $showSettings) {
+            SettingsView()
+        }
     }
 }
 

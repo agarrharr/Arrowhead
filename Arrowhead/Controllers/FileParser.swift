@@ -100,7 +100,6 @@ class FileParser {
             var content: [Line] = []
             lines.forEach { line in
                 // TODO: Warn the user if the file contains mixed tabs and spaces
-                // TODO: Ignore empty lines
                 // TODO: Nest tasks and notes
                 // TODO: Pull out headers and show those in the nesting
                 

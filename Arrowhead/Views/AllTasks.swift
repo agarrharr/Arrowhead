@@ -1,25 +1,27 @@
 import SwiftUI
 
-struct DetailView: View {
-    var url: URL
+struct AllTasksView: View {
+    var url: URL?
     @EnvironmentObject var fileController: FileController
     
     var body: some View {
         List {
             ForEach(fileController.projects, id: \.self) { project in
-                Section(header: Text(project.name)) {
-                    ForEach(project.content, id: \.id) { line in
-                        if line is Action {
-                            TodoView(projectId: project.id, actionId: line.id)
-                        } else {
-                            // TODO: display notes as well
+                if url == nil || project.fileURL.path.hasPrefix(url!.path) {
+                    Section(header: Text(project.name)) {
+                        ForEach(project.content, id: \.id) { line in
+                            if line is Action {
+                                TodoView(projectId: project.id, actionId: line.id)
+                            } else {
+                                // TODO: display notes as well
+                            }
                         }
                     }
                 }
             }
         }
         .listStyle(SidebarListStyle())
-        .navigationTitle(url.lastPathComponent)
+        .navigationTitle("All Tasks")
         .navigationBarTitleDisplayMode(.inline)
     }
 }
@@ -30,9 +32,8 @@ struct DetailView_Previews: PreviewProvider {
         fileController.loadFakeProjects()
         
         return NavigationView {
-            DetailView(url: URL(string: "some/path/Notes")!)
+            AllTasksView()
                 .environmentObject(fileController)
         }
-//        .preferredColorScheme(.dark)
     }
 }
