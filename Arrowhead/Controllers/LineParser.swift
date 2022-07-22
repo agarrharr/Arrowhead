@@ -8,7 +8,6 @@
 import Foundation
 
 public class LineParser {
-    // TODO: Get line number for id
     func getTask(from string: String, at lineNumber: Int) -> Line {
         let regex = try! NSRegularExpression(pattern: #"(^\s*[-*]{1} \[([ xX]{1})\] )"#)
         let matches = regex.matches(in: string, range: NSRange(location: 0, length: string.utf16.count))

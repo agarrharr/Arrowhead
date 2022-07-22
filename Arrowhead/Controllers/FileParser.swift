@@ -59,7 +59,6 @@ class FileParser {
                             completed: true,
                             tags: ["#adam"],
                             dueDate: "📅 2021-09-07") as Line
-//                            subTasks: [Note(text: "What should I call it?")]) as! Line
                         ,
                         Action(
                             id: 2,
@@ -96,6 +95,7 @@ class FileParser {
             
             let projectID = UUID()
             
+            var containsAction = false
             var lineNumber = 1
             var content: [Line] = []
             lines.forEach { line in
@@ -105,14 +105,16 @@ class FileParser {
                 // TODO: Pull out headers and show those in the nesting
                 
                 if line != "" {
-                    content.append(
-                        lineParser.getTask(from: line, at: lineNumber)
-                    )
+                    let item = lineParser.getTask(from: line, at: lineNumber)
+                    if item is Action {
+                        containsAction = true
+                    }
+                    content.append(item)
                 }
                 
                 lineNumber += 1
             }
-            if content.count > 0 {
+            if content.count > 0 && containsAction {
                 projects.append(Project(id: projectID, name: url.deletingPathExtension().lastPathComponent, fileName: url.lastPathComponent, fileURL: url, content: content))
             }
         }
