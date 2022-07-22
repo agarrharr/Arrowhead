@@ -19,9 +19,6 @@ struct DetailView: View {
             }
         }
         .listStyle(SidebarListStyle())
-        .onAppear {
-            fileController.loadProjectsFromDirectory(url: url)
-        }
         .navigationTitle(url.lastPathComponent)
         .navigationBarTitleDisplayMode(.inline)
     }

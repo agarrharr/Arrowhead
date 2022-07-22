@@ -1,7 +1,6 @@
 import SwiftUI
 
 struct OverviewView: View {
-    @EnvironmentObject var bookmarkController: BookmarkController
     @EnvironmentObject var model: Model
     
     var body: some View {
@@ -20,7 +19,6 @@ struct OverviewView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             OverviewView()
-                .environmentObject(BookmarkController(preview: true))
                 .environmentObject(Model())
         }
     }

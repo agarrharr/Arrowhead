@@ -40,7 +40,7 @@ struct FolderView: View {
                     .environmentObject(bookmarkController)
             }
         }
-        //.headerProminence(.increased) // TODO: iOS 15 only
+        .headerProminence(.increased)
     }
 }
 

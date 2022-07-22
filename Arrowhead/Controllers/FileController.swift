@@ -1,4 +1,5 @@
 import Foundation
+import SwiftUI
 
 struct Project: Hashable {
     static func == (lhs: Project, rhs: Project) -> Bool {
@@ -49,8 +50,16 @@ class FileController: ObservableObject {
     @Published var projects: [Project] = []
     var fileParser = FileParser()
     
-    public func loadProjectsFromDirectory(url: URL) {
-        projects = fileParser.loadProjectsFromDirectory(url: url)
+    public func loadAllProjects() {
+        let bookmarkController = BookmarkController()
+        
+        bookmarkController.bookmarks.forEach { bookmark in
+            projects.append(contentsOf: loadProjectsFromDirectory(url: bookmark.url))
+        }
+    }
+    
+    func loadProjectsFromDirectory(url: URL) -> [Project] {
+        fileParser.loadProjectsFromDirectory(url: url)
     }
     
     public func loadFakeProjects() {
