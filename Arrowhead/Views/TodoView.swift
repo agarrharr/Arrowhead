@@ -1,16 +1,31 @@
 import SwiftUI
 
 struct TodoView: View {
-    @State var todo: Todo
+    @State var projectId: UUID
+    @State var actionId: Int
+//    @Binding var todo: Action
     
     @EnvironmentObject var fileController: FileController
     
+//    @ViewBuilder
     var body: some View {
-        VStack {
+        let project = fileController.projects.filter { project in
+                project.id == projectId
+        }.first
+
+        guard let project = project else { return AnyView(EmptyView()) }
+
+        let todo = project.content.filter { line in
+            line.id == actionId
+        }.first
+
+        guard let todo = todo as? Action else { return AnyView(EmptyView()) }
+        
+        return AnyView(VStack {
             HStack {
                 Image(systemName: todo.completed ? "checkmark.circle.fill" : "circle")
                     .onTapGesture {
-                        fileController.toggleTaskCompletion(todo: todo)
+                        fileController.toggleTaskCompletion(for: todo, in: project)
                     }
                 Text(todo.title)
                 Spacer()
@@ -40,15 +55,17 @@ struct TodoView: View {
                     Spacer()
                 }
             }
-        }
+        })
     }
 }
 
 struct TodoView_Previews: PreviewProvider {
     static var previews: some View {
-        let todo1 = Todo(id: UUID(), projectID: UUID(), fileURL: URL(string: "path/to/file")!, fileName: "Project 1", lineNumber: 1, completed: false, title: "Take out the trash", tags: ["#adam", "#next"], dueDate: "📅 2021-09-07", doneDate: nil, subTasks: nil)
+        let fileController = FileController()
+        fileController.loadFakeProjects()
         
-        TodoView(todo: todo1)
+        // TODO: give correct uuid and action id
+        return TodoView(projectId: UUID(), actionId: 1)
             .environmentObject(FileController())
             .preferredColorScheme(.dark)
     }

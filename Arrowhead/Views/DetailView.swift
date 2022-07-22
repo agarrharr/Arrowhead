@@ -8,8 +8,12 @@ struct DetailView: View {
         List {
             ForEach(fileController.projects, id: \.self) { project in
                 Section(header: Text(project.name)) {
-                    ForEach(project.todos, id: \.id) { todo in
-                        TodoView(todo: todo)
+                    ForEach(project.content, id: \.id) { line in
+                        if line is Action {
+                            TodoView(projectId: project.id, actionId: line.id)
+                        } else {
+                            // TODO: display notes as well
+                        }
                     }
                 }
             }
@@ -25,10 +29,13 @@ struct DetailView: View {
 
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationView {
+        let fileController = FileController()
+        fileController.loadFakeProjects()
+        
+        return NavigationView {
             DetailView(url: URL(string: "some/path/Notes")!)
-                .environmentObject(FileController())
+                .environmentObject(fileController)
         }
-        .preferredColorScheme(.dark)
+//        .preferredColorScheme(.dark)
     }
 }

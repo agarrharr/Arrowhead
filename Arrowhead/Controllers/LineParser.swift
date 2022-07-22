@@ -7,8 +7,9 @@
 
 import Foundation
 
-class LineParser {
-    func getTask(string: String) -> (title: String, isCompleted: Bool, tags: [String], dueDate: String?, doneDate: String?)? {
+public class LineParser {
+    // TODO: Get line number for id
+    func getTask(from string: String, at lineNumber: Int) -> Line {
         let regex = try! NSRegularExpression(pattern: #"(^\s*[-*]{1} \[([ xX]{1})\] )"#)
         let matches = regex.matches(in: string, range: NSRange(location: 0, length: string.utf16.count))
 
@@ -26,9 +27,9 @@ class LineParser {
             let checkmark = string[string.index(string.startIndex, offsetBy: checkmarkIndex)].lowercased()
             let isCompleted = checkmark == "x"
             
-            return (title, isCompleted, tags, dueDate, doneDate)
+            return Action(id: lineNumber, title: title, completed: isCompleted, tags: tags, dueDate: dueDate, doneDate: doneDate)
         }
-        return nil
+        return Note(id: lineNumber, text: string)
     }
     
     // MARK: Private

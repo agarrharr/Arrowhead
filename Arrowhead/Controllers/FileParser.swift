@@ -50,43 +50,35 @@ class FileParser {
                 Project(
                     id: UUID(uuidString: "123")!,
                     name: "Project 1",
-                    todos:[
-                        Todo(
-                            id: UUID(),
-                            projectID: UUID(uuidString: "123")!,
-                            fileURL: URL(string: "some/path/Home")!,
-                            fileName: "Project 1",
-                            lineNumber: 1,
-                            completed: true,
+                    fileName: "Project 1",
+                    fileURL: URL(string: "some/path/Home")!,
+                    content:[
+                        Action(
+                            id: 1,
                             title: "Make an app",
+                            completed: true,
                             tags: ["#adam"],
-                            dueDate: "📅 2021-09-07",
-                            subTasks: [Note(text: "What should I call it?")])
+                            dueDate: "📅 2021-09-07") as Line
+//                            subTasks: [Note(text: "What should I call it?")]) as! Line
                         ,
-                        Todo(
-                            id: UUID(),
-                            projectID: UUID(uuidString: "123")!,
-                            fileURL: URL(string: "some/path/Home")!,
-                            fileName: "Project 1",
-                            lineNumber: 1,
-                            completed: false,
+                        Action(
+                            id: 2,
                             title: "Make it work",
-                            tags: [])
+                            completed: false,
+                            tags: []) as Line
                     ]
                 ),
                 Project(
                     id: UUID(uuidString: "123")!,
                     name: "Finish livingroom",
-                    todos: [
-                        Todo(
-                            id: UUID(),
-                            projectID: UUID(uuidString: "123")!,
-                            fileURL: URL(string: "some/path/Home")!,
-                            fileName: "Finish livingroom",
-                            lineNumber: 1,
-                            completed: false,
+                    fileName: "Finish livingroom",
+                    fileURL: URL(string: "some/path/Home")!,
+                    content: [
+                        Action(
+                            id: 1,
                             title: "Paint ceiling",
-                            tags: [])
+                            completed: false,
+                            tags: []) as Line
                     ]
                 )
             ]
@@ -105,7 +97,7 @@ class FileParser {
             let projectID = UUID()
             
             var lineNumber = 1
-            var todos: [Todo] = []
+            var content: [Line] = []
             lines.forEach { line in
                 // TODO: Warn the user if the file contains mixed tabs and spaces
                 // TODO: Ignore empty lines
@@ -113,18 +105,15 @@ class FileParser {
                 // TODO: Pull out headers and show those in the nesting
                 
                 if line != "" {
-                    if let task = lineParser.getTask(string: line) {
-                        todos.append(
-                            Todo(id: UUID(), projectID: projectID, fileURL: url, fileName: url.lastPathComponent, lineNumber: lineNumber, completed: task.isCompleted, title: task.title, tags: task.tags, dueDate: task.dueDate, doneDate: task.doneDate)
-
-                        )
-                    }
+                    content.append(
+                        lineParser.getTask(from: line, at: lineNumber)
+                    )
                 }
                 
                 lineNumber += 1
             }
-            if todos.count > 0 {
-                projects.append(Project(id: projectID, name: url.lastPathComponent, todos: todos))
+            if content.count > 0 {
+                projects.append(Project(id: projectID, name: url.deletingPathExtension().lastPathComponent, fileName: url.lastPathComponent, fileURL: url, content: content))
             }
         }
         
