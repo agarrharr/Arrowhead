@@ -15,11 +15,11 @@ struct FolderView: View {
                 .font(.title2)
                 .foregroundColor(.black)
         ) {
-            ForEach(bookmarkController.bookmarks, id: \.0) { uuid, url in
+            ForEach(bookmarkController.bookmarks, id: \.uuid) { bookmark in
                 HStack {
                     Image(systemName: "folder")
                         .foregroundColor(.accentColor)
-                    Text(url.lastPathComponent)
+                    Text(bookmark.url.lastPathComponent)
                 }
             }
             .onDelete(perform: bookmarkController.removeBookmark)

@@ -1,8 +1,7 @@
 import SwiftUI
 
-struct AllTasksView: View {
+struct ProjectsView: View {
     var url: URL?
-    
     @EnvironmentObject var fileController: FileController
     
     var body: some View {
@@ -14,30 +13,26 @@ struct AllTasksView: View {
             }
             
             ForEach(filteredProjects, id: \.self) { project in
-                Section(header: Text(project.name)) {
-                    ForEach(project.content, id: \.id) { line in
-                        if line is Action {
-                            TodoView(projectId: project.id, actionId: line.id)
-                        } else {
-                            // TODO: display notes as well
-                        }
-                    }
+                NavigationLink {
+                    AllTasksView(url: project.fileURL)
+                } label: {
+                    Text(project.name)
                 }
             }
         }
         .listStyle(SidebarListStyle())
-        .navigationTitle(url == nil ? "All Tasks" : url!.deletingPathExtension().lastPathComponent)
+        .navigationTitle(url == nil ? "All Projects" : url!.deletingPathExtension().lastPathComponent)
         .navigationBarTitleDisplayMode(.inline)
     }
 }
 
-struct DetailView_Previews: PreviewProvider {
+struct ProjectsView_Previews: PreviewProvider {
     static var previews: some View {
         let fileController = FileController()
         fileController.loadFakeProjects()
         
         return NavigationView {
-            AllTasksView()
+            ProjectsView()
                 .environmentObject(fileController)
         }
     }

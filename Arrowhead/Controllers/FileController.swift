@@ -53,6 +53,7 @@ class FileController: ObservableObject {
     public func loadAllProjects() {
         let bookmarkController = BookmarkController()
         
+        // Get bookmarks with Combine
         bookmarkController.bookmarks.forEach { bookmark in
             projects.append(contentsOf: loadProjectsFromDirectory(url: bookmark.url))
         }

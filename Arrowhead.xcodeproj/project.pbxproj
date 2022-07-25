@@ -12,6 +12,7 @@
 		68B7138827F264A100BBA7A4 /* FileParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B7138727F264A100BBA7A4 /* FileParserTests.swift */; };
 		68B7138B27F266C300BBA7A4 /* Project1.md in Resources */ = {isa = PBXBuildFile; fileRef = 68B7138A27F266C300BBA7A4 /* Project1.md */; };
 		9940E385288B2F5F0017E3A4 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9940E384288B2F5F0017E3A4 /* SettingsView.swift */; };
+		9940E387288F06AC0017E3A4 /* ProjectsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9940E386288F06AC0017E3A4 /* ProjectsView.swift */; };
 		994C201D26C1C81A0029E6DC /* BookmarkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994C201C26C1C8190029E6DC /* BookmarkController.swift */; };
 		994C201F26C1D4EA0029E6DC /* AllTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994C201E26C1D4EA0029E6DC /* AllTasks.swift */; };
 		994C202126C1D6D80029E6DC /* FileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994C202026C1D6D80029E6DC /* FileController.swift */; };
@@ -47,6 +48,7 @@
 		68B7138727F264A100BBA7A4 /* FileParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileParserTests.swift; sourceTree = "<group>"; };
 		68B7138A27F266C300BBA7A4 /* Project1.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Project1.md; sourceTree = "<group>"; };
 		9940E384288B2F5F0017E3A4 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		9940E386288F06AC0017E3A4 /* ProjectsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsView.swift; sourceTree = "<group>"; };
 		994C201C26C1C8190029E6DC /* BookmarkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkController.swift; sourceTree = "<group>"; };
 		994C201E26C1D4EA0029E6DC /* AllTasks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTasks.swift; sourceTree = "<group>"; };
 		994C202026C1D6D80029E6DC /* FileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileController.swift; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 				99EAE7BF26E80023007C22AC /* TodoView.swift */,
 				994C202226C2E8980029E6DC /* DocumentPicker.swift */,
 				9940E384288B2F5F0017E3A4 /* SettingsView.swift */,
+				9940E386288F06AC0017E3A4 /* ProjectsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -293,6 +296,7 @@
 			files = (
 				9940E385288B2F5F0017E3A4 /* SettingsView.swift in Sources */,
 				68B7138427F25EBC00BBA7A4 /* FileParser.swift in Sources */,
+				9940E387288F06AC0017E3A4 /* ProjectsView.swift in Sources */,
 				99EAE7C426E80D90007C22AC /* Model.swift in Sources */,
 				99613D5826F39516008D0FA3 /* PerspectivesView.swift in Sources */,
 				99613D5626F39516008D0FA3 /* PerspectiveTileView.swift in Sources */,

@@ -1,16 +1,21 @@
 import SwiftUI
 
+struct Bookmark {
+    var uuid: String
+    var url: URL
+}
+
 class BookmarkController: ObservableObject {
-    @Published var bookmarks: [(uuid: String, url: URL)] = []
+    @Published var bookmarks: [Bookmark] = []
     
     init(preview: Bool = false) {
         if preview {
             bookmarks = [
-                ("123", URL(string: "some/path/Notes")!),
-                ("124", URL(string: "some/path/Business")!),
+                Bookmark(uuid: "123", url: URL(string: "some/path/Notes")!),
+                Bookmark(uuid: "124", url: URL(string: "some/path/Business")!),
             ]
         } else {
-            getBookmarks()
+            bookmarks = getBookmarks()
         }
     }
     
@@ -35,7 +40,7 @@ class BookmarkController: ObservableObject {
             }
             
             withAnimation {
-                bookmarks.append((uuid, resolvedURL))
+                bookmarks.append(Bookmark(uuid: uuid, url: resolvedURL))
             }
             
         } catch {
@@ -58,15 +63,15 @@ class BookmarkController: ObservableObject {
         FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
     }
     
-    func getBookmarks() {
+    func getBookmarks() -> [Bookmark] {
         let files = try? FileManager.default.contentsOfDirectory(at: getAppSandboxDirectory(), includingPropertiesForKeys: nil)
         
-        self.bookmarks = files?.compactMap({ file in
+        return files?.compactMap({ file in
             do {
                 let bookmarkData = try Data(contentsOf: file)
                 let uuid = file.lastPathComponent
                 guard let url = getBookmarkURL(bookmarkData: bookmarkData) else { return nil }
-                return (uuid, url)
+                return Bookmark(uuid: uuid, url: url)
             }
             catch let error {
                 print(error)

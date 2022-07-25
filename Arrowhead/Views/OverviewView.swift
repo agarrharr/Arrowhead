@@ -8,13 +8,13 @@ struct OverviewView: View {
     var body: some View {
         List {
             NavigationLink {
-                AllTasksView()
+                ProjectsView()
             } label: {
                 Text("All Tasks")
             }
             ForEach(bookmarkController.bookmarks, id: \.uuid) { bookmark in
                 NavigationLink {
-                    AllTasksView(url: bookmark.url)
+                    ProjectsView(url: bookmark.url)
                 } label: {
                     Text(bookmark.url.deletingPathExtension().lastPathComponent)
                 }
@@ -29,7 +29,7 @@ struct OverviewView: View {
             }
         }
         .listStyle(InsetGroupedListStyle())
-        .navigationBarTitle("")
+        .navigationBarTitle("Home")
         .navigationBarTitleDisplayMode(.inline)
         .sheet(isPresented: $showSettings) {
             SettingsView()
