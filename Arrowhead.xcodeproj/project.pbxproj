@@ -16,7 +16,7 @@
 		994C201D26C1C81A0029E6DC /* BookmarkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994C201C26C1C8190029E6DC /* BookmarkController.swift */; };
 		994C201F26C1D4EA0029E6DC /* AllTasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994C201E26C1D4EA0029E6DC /* AllTasksView.swift */; };
 		994C202126C1D6D80029E6DC /* FileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994C202026C1D6D80029E6DC /* FileController.swift */; };
-		994C202326C2E8980029E6DC /* DocumentPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994C202226C2E8980029E6DC /* DocumentPicker.swift */; };
+		994C202326C2E8980029E6DC /* DocumentPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994C202226C2E8980029E6DC /* DocumentPickerView.swift */; };
 		99613D5626F39516008D0FA3 /* PerspectiveTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99613D5326F39516008D0FA3 /* PerspectiveTileView.swift */; };
 		99613D5726F39516008D0FA3 /* OverviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99613D5426F39516008D0FA3 /* OverviewView.swift */; };
 		99613D5826F39516008D0FA3 /* PerspectivesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99613D5526F39516008D0FA3 /* PerspectivesView.swift */; };
@@ -52,7 +52,7 @@
 		994C201C26C1C8190029E6DC /* BookmarkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkController.swift; sourceTree = "<group>"; };
 		994C201E26C1D4EA0029E6DC /* AllTasksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTasksView.swift; sourceTree = "<group>"; };
 		994C202026C1D6D80029E6DC /* FileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileController.swift; sourceTree = "<group>"; };
-		994C202226C2E8980029E6DC /* DocumentPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentPicker.swift; sourceTree = "<group>"; };
+		994C202226C2E8980029E6DC /* DocumentPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentPickerView.swift; sourceTree = "<group>"; };
 		99613D5326F39516008D0FA3 /* PerspectiveTileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerspectiveTileView.swift; sourceTree = "<group>"; };
 		99613D5426F39516008D0FA3 /* OverviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverviewView.swift; sourceTree = "<group>"; };
 		99613D5526F39516008D0FA3 /* PerspectivesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerspectivesView.swift; sourceTree = "<group>"; };
@@ -176,7 +176,7 @@
 				99EAE7C126E80882007C22AC /* FolderView.swift */,
 				994C201E26C1D4EA0029E6DC /* AllTasksView.swift */,
 				99EAE7BF26E80023007C22AC /* TodoView.swift */,
-				994C202226C2E8980029E6DC /* DocumentPicker.swift */,
+				994C202226C2E8980029E6DC /* DocumentPickerView.swift */,
 				9940E384288B2F5F0017E3A4 /* SettingsView.swift */,
 				9940E386288F06AC0017E3A4 /* ProjectsView.swift */,
 			);
@@ -307,7 +307,7 @@
 				99EAE7C026E80023007C22AC /* TodoView.swift in Sources */,
 				994C202126C1D6D80029E6DC /* FileController.swift in Sources */,
 				99E8CFDB26C1701C008CEFE2 /* ContentView.swift in Sources */,
-				994C202326C2E8980029E6DC /* DocumentPicker.swift in Sources */,
+				994C202326C2E8980029E6DC /* DocumentPickerView.swift in Sources */,
 				99E8CFD926C1701C008CEFE2 /* ArrowheadApp.swift in Sources */,
 				99613D5726F39516008D0FA3 /* OverviewView.swift in Sources */,
 			);

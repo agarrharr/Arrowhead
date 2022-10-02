@@ -30,7 +30,7 @@ struct FolderView: View {
                 Label("Add Folder", systemImage: "plus")
             }
             .sheet(isPresented: $showFilePicker) {
-                DocumentPicker()
+                DocumentPickerView()
                     .environmentObject(bookmarkController)
             }
         }

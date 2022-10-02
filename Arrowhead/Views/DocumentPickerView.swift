@@ -1,13 +1,13 @@
 import SwiftUI
 
-struct DocumentPicker: UIViewControllerRepresentable {
+struct DocumentPickerView: UIViewControllerRepresentable {
     @EnvironmentObject private var bookmarkController: BookmarkController
     
     func makeCoordinator() -> Coordinator {
         return Coordinator(self)
     }
     
-    func makeUIViewController(context: UIViewControllerRepresentableContext<DocumentPicker>) -> UIDocumentPickerViewController {
+    func makeUIViewController(context: UIViewControllerRepresentableContext<DocumentPickerView>) -> UIDocumentPickerViewController {
         let documentPicker =
             UIDocumentPickerViewController(forOpeningContentTypes: [.folder])
         documentPicker.delegate = context.coordinator
@@ -20,9 +20,9 @@ struct DocumentPicker: UIViewControllerRepresentable {
     }
     
     class Coordinator: NSObject, UIDocumentPickerDelegate {
-        var parent: DocumentPicker
+        var parent: DocumentPickerView
         
-        init(_ parent: DocumentPicker) {
+        init(_ parent: DocumentPickerView) {
             self.parent = parent
         }
         
