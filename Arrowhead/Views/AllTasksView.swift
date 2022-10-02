@@ -31,7 +31,7 @@ struct AllTasksView: View {
     }
 }
 
-struct DetailView_Previews: PreviewProvider {
+struct AllTasksView_Previews: PreviewProvider {
     static var previews: some View {
         let fileController = FileController()
         fileController.loadFakeProjects()

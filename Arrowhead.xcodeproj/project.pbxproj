@@ -14,7 +14,7 @@
 		9940E385288B2F5F0017E3A4 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9940E384288B2F5F0017E3A4 /* SettingsView.swift */; };
 		9940E387288F06AC0017E3A4 /* ProjectsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9940E386288F06AC0017E3A4 /* ProjectsView.swift */; };
 		994C201D26C1C81A0029E6DC /* BookmarkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994C201C26C1C8190029E6DC /* BookmarkController.swift */; };
-		994C201F26C1D4EA0029E6DC /* AllTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994C201E26C1D4EA0029E6DC /* AllTasks.swift */; };
+		994C201F26C1D4EA0029E6DC /* AllTasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994C201E26C1D4EA0029E6DC /* AllTasksView.swift */; };
 		994C202126C1D6D80029E6DC /* FileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994C202026C1D6D80029E6DC /* FileController.swift */; };
 		994C202326C2E8980029E6DC /* DocumentPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994C202226C2E8980029E6DC /* DocumentPicker.swift */; };
 		99613D5626F39516008D0FA3 /* PerspectiveTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99613D5326F39516008D0FA3 /* PerspectiveTileView.swift */; };
@@ -50,7 +50,7 @@
 		9940E384288B2F5F0017E3A4 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		9940E386288F06AC0017E3A4 /* ProjectsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsView.swift; sourceTree = "<group>"; };
 		994C201C26C1C8190029E6DC /* BookmarkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkController.swift; sourceTree = "<group>"; };
-		994C201E26C1D4EA0029E6DC /* AllTasks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTasks.swift; sourceTree = "<group>"; };
+		994C201E26C1D4EA0029E6DC /* AllTasksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTasksView.swift; sourceTree = "<group>"; };
 		994C202026C1D6D80029E6DC /* FileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileController.swift; sourceTree = "<group>"; };
 		994C202226C2E8980029E6DC /* DocumentPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentPicker.swift; sourceTree = "<group>"; };
 		99613D5326F39516008D0FA3 /* PerspectiveTileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerspectiveTileView.swift; sourceTree = "<group>"; };
@@ -174,7 +174,7 @@
 				99613D5526F39516008D0FA3 /* PerspectivesView.swift */,
 				99613D5326F39516008D0FA3 /* PerspectiveTileView.swift */,
 				99EAE7C126E80882007C22AC /* FolderView.swift */,
-				994C201E26C1D4EA0029E6DC /* AllTasks.swift */,
+				994C201E26C1D4EA0029E6DC /* AllTasksView.swift */,
 				99EAE7BF26E80023007C22AC /* TodoView.swift */,
 				994C202226C2E8980029E6DC /* DocumentPicker.swift */,
 				9940E384288B2F5F0017E3A4 /* SettingsView.swift */,
@@ -303,7 +303,7 @@
 				68B7138627F2614A00BBA7A4 /* LineParser.swift in Sources */,
 				99EAE7C226E80882007C22AC /* FolderView.swift in Sources */,
 				994C201D26C1C81A0029E6DC /* BookmarkController.swift in Sources */,
-				994C201F26C1D4EA0029E6DC /* AllTasks.swift in Sources */,
+				994C201F26C1D4EA0029E6DC /* AllTasksView.swift in Sources */,
 				99EAE7C026E80023007C22AC /* TodoView.swift in Sources */,
 				994C202126C1D6D80029E6DC /* FileController.swift in Sources */,
 				99E8CFDB26C1701C008CEFE2 /* ContentView.swift in Sources */,
