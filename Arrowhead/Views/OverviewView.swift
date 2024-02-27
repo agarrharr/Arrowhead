@@ -41,7 +41,6 @@ struct OverviewView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             OverviewView()
-                .environmentObject(Model())
         }
     }
 }

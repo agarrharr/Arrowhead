@@ -29,7 +29,6 @@
 		99E8CFE026C1701E008CEFE2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99E8CFDF26C1701E008CEFE2 /* Preview Assets.xcassets */; };
 		99EAE7C026E80023007C22AC /* TodoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99EAE7BF26E80023007C22AC /* TodoView.swift */; };
 		99EAE7C226E80882007C22AC /* FolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99EAE7C126E80882007C22AC /* FolderView.swift */; };
-		99EAE7C426E80D90007C22AC /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99EAE7C326E80D90007C22AC /* Model.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,7 +66,6 @@
 		99E8CFE626C1701F008CEFE2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		99EAE7BF26E80023007C22AC /* TodoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoView.swift; sourceTree = "<group>"; };
 		99EAE7C126E80882007C22AC /* FolderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderView.swift; sourceTree = "<group>"; };
-		99EAE7C326E80D90007C22AC /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,14 +92,6 @@
 				68B7138A27F266C300BBA7A4 /* Project1.md */,
 			);
 			path = Fixtures;
-			sourceTree = "<group>";
-		};
-		99613D5926F395A3008D0FA3 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				99EAE7C326E80D90007C22AC /* Model.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		99613D5A26F395B5008D0FA3 /* Controllers */ = {
@@ -148,7 +138,6 @@
 			isa = PBXGroup;
 			children = (
 				99613D5A26F395B5008D0FA3 /* Controllers */,
-				99613D5926F395A3008D0FA3 /* Model */,
 				99EAE7BE26E7A6D6007C22AC /* Views */,
 				99E8CFD826C1701C008CEFE2 /* ArrowheadApp.swift */,
 				99E8CFDC26C1701E008CEFE2 /* Assets.xcassets */,
@@ -297,7 +286,6 @@
 				9940E385288B2F5F0017E3A4 /* SettingsView.swift in Sources */,
 				68B7138427F25EBC00BBA7A4 /* FileParser.swift in Sources */,
 				9940E387288F06AC0017E3A4 /* ProjectsView.swift in Sources */,
-				99EAE7C426E80D90007C22AC /* Model.swift in Sources */,
 				99613D5826F39516008D0FA3 /* PerspectivesView.swift in Sources */,
 				99613D5626F39516008D0FA3 /* PerspectiveTileView.swift in Sources */,
 				68B7138627F2614A00BBA7A4 /* LineParser.swift in Sources */,

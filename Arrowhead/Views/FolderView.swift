@@ -4,7 +4,6 @@ struct FolderView: View {
     @State private var showFilePicker = false
     
     @EnvironmentObject var bookmarkController: BookmarkController
-    @EnvironmentObject var model: Model
     @State private var editMode = EditMode.inactive
     
     var body: some View {
@@ -43,7 +42,6 @@ struct FolderView_Previews: PreviewProvider {
         List {
             FolderView()
                 .environmentObject(BookmarkController(preview: true))
-                .environmentObject(Model())
         }
     }
 }

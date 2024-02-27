@@ -2,7 +2,6 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var fileController: FileController
-    @EnvironmentObject var model: Model
     
     var body: some View {
         NavigationView {
@@ -17,6 +16,5 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
-            .environmentObject(Model())
     }
 }
