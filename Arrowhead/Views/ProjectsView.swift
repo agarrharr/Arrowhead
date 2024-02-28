@@ -2,7 +2,7 @@ import SwiftUI
 
 struct ProjectsView: View {
     var url: URL?
-    @EnvironmentObject var fileController: FileController
+    var fileController: FileController
     
     var body: some View {
         List {
@@ -14,7 +14,10 @@ struct ProjectsView: View {
             
             ForEach(filteredProjects, id: \.self) { project in
                 NavigationLink {
-                    AllTasksView(url: project.fileURL)
+                    AllTasksView(
+                        url: project.fileURL,
+                        fileController: fileController
+                    )
                 } label: {
                     Text(project.name)
                 }
@@ -32,8 +35,7 @@ struct ProjectsView_Previews: PreviewProvider {
         fileController.loadFakeProjects()
         
         return NavigationView {
-            ProjectsView()
-                .environmentObject(fileController)
+            ProjectsView(fileController: FileController())
         }
     }
 }

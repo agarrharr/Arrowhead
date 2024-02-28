@@ -2,8 +2,7 @@ import SwiftUI
 
 struct AllTasksView: View {
     var url: URL?
-    
-    @EnvironmentObject var fileController: FileController
+    var fileController: FileController
     
     var body: some View {
         List {
@@ -17,7 +16,11 @@ struct AllTasksView: View {
                 Section(header: Text(project.name)) {
                     ForEach(project.content, id: \.id) { line in
                         if line is Action {
-                            TodoView(projectId: project.id, actionId: line.id)
+                            TodoView(
+                                projectId: project.id,
+                                actionId: line.id,
+                                fileController: fileController
+                            )
                         } else {
                             // TODO: display notes as well
                         }
@@ -37,8 +40,7 @@ struct AllTasksView_Previews: PreviewProvider {
         fileController.loadFakeProjects()
         
         return NavigationView {
-            AllTasksView()
-                .environmentObject(fileController)
+            AllTasksView(fileController: FileController())
         }
     }
 }

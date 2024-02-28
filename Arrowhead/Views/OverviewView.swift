@@ -1,20 +1,31 @@
+import ComposableArchitecture
 import SwiftUI
 
+@Reducer
+struct OverviewReducer {
+    @ObservableState
+    struct State: Equatable {
+        var bookmarks: [Bookmark] = []
+    }
+}
+
 struct OverviewView: View {
-    @State private var showSettings = false
+    let store: StoreOf<OverviewReducer>
+    var bookmarkController: BookmarkController
+    var fileController = FileController()
     
-    @EnvironmentObject var bookmarkController: BookmarkController
+    @State private var showSettings = false
     
     var body: some View {
         List {
             NavigationLink {
-                ProjectsView()
+                ProjectsView(fileController: fileController)
             } label: {
                 Text("All Tasks")
             }
             ForEach(bookmarkController.bookmarks, id: \.uuid) { bookmark in
                 NavigationLink {
-                    ProjectsView(url: bookmark.url)
+                    ProjectsView(url: bookmark.url, fileController: fileController)
                 } label: {
                     Text(bookmark.url.deletingPathExtension().lastPathComponent)
                 }
@@ -40,7 +51,18 @@ struct OverviewView: View {
 struct OverviewView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            OverviewView()
+            OverviewView(
+                store: Store(
+                    initialState: OverviewReducer.State(
+                        bookmarks: [
+                            Bookmark(uuid: "123", url: URL(string: "http://www.url.com")!)
+                        ]
+                    )
+                ) {
+                    OverviewReducer()
+                },
+                bookmarkController: BookmarkController()
+            )
         }
     }
 }

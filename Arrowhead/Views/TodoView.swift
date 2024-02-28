@@ -5,7 +5,7 @@ struct TodoView: View {
     @State var actionId: Int
 //    @Binding var todo: Action
     
-    @EnvironmentObject var fileController: FileController
+    var fileController: FileController
     
 //    @ViewBuilder
     var body: some View {
@@ -65,8 +65,7 @@ struct TodoView_Previews: PreviewProvider {
         fileController.loadFakeProjects()
         
         // TODO: give correct uuid and action id
-        return TodoView(projectId: UUID(), actionId: 1)
-            .environmentObject(FileController())
+        return TodoView(projectId: UUID(), actionId: 1, fileController: FileController())
             .preferredColorScheme(.dark)
     }
 }

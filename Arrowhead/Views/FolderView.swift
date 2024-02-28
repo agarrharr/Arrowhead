@@ -3,7 +3,7 @@ import SwiftUI
 struct FolderView: View {
     @State private var showFilePicker = false
     
-    @EnvironmentObject var bookmarkController: BookmarkController
+    private var bookmarkController = BookmarkController()
     @State private var editMode = EditMode.inactive
     
     var body: some View {
@@ -29,8 +29,7 @@ struct FolderView: View {
                 Label("Add Folder", systemImage: "plus")
             }
             .sheet(isPresented: $showFilePicker) {
-                DocumentPickerView()
-                    .environmentObject(bookmarkController)
+                DocumentPickerView(bookmarkController: bookmarkController)
             }
         }
         .headerProminence(.increased)
@@ -41,7 +40,6 @@ struct FolderView_Previews: PreviewProvider {
     static var previews: some View {
         List {
             FolderView()
-                .environmentObject(BookmarkController(preview: true))
         }
     }
 }

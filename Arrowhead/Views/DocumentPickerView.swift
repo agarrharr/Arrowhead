@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct DocumentPickerView: UIViewControllerRepresentable {
-    @EnvironmentObject private var bookmarkController: BookmarkController
+    var bookmarkController: BookmarkController
     
     func makeCoordinator() -> Coordinator {
         return Coordinator(self)

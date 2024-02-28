@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct Bookmark {
+struct Bookmark: Equatable {
     var uuid: String
     var url: URL
 }
