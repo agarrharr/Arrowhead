@@ -19,13 +19,13 @@ struct OverviewView: View {
     var body: some View {
         List {
             NavigationLink {
-                ProjectsView(fileController: fileController)
+                ProjectsView()
             } label: {
                 Text("All Tasks")
             }
             ForEach(bookmarkController.bookmarks, id: \.uuid) { bookmark in
                 NavigationLink {
-                    ProjectsView(url: bookmark.url, fileController: fileController)
+                    ProjectsView(url: bookmark.url)
                 } label: {
                     Text(bookmark.url.deletingPathExtension().lastPathComponent)
                 }

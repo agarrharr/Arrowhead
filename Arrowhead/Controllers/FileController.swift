@@ -1,12 +1,12 @@
 import Foundation
 import SwiftUI
 
-struct Project: Hashable {
-    static func == (lhs: Project, rhs: Project) -> Bool {
+public struct Project: Equatable, Sendable, Hashable {
+    public static func == (lhs: Project, rhs: Project) -> Bool {
         lhs.id == rhs.id
     }
     
-    func hash(into hasher: inout Hasher) {
+    public func hash(into hasher: inout Hasher) {
         hasher.combine(id)
     }
     
@@ -18,7 +18,7 @@ struct Project: Hashable {
 }
 
 // A Line is either a Note or an Action
-protocol Line {
+protocol Line: Sendable {
     var id: Int { get }
 }
 struct LineContainer: Identifiable {
@@ -48,37 +48,36 @@ struct Note: Line {
 
 class FileController: ObservableObject {
     @Published var projects: [Project] = []
-    var fileParser = FileParser()
+//    var fileParser = FileParser()
     
-    public func loadAllProjects() {
-        let bookmarkController = BookmarkController()
-        
-        // Get bookmarks with Combine
-        bookmarkController.bookmarks.forEach { bookmark in
-            projects.append(contentsOf: loadProjectsFromDirectory(url: bookmark.url))
-        }
-    }
+//    public func loadAllProjects() {
+//        let bookmarkController = BookmarkController()
+//        
+//        // Get bookmarks with Combine
+//        bookmarkController.bookmarks.forEach { bookmark in
+//            projects.append(contentsOf: loadProjectsFromDirectory(url: bookmark.url))
+//        }
+//    }
     
-    func loadProjectsFromDirectory(url: URL) -> [Project] {
-        fileParser.loadProjectsFromDirectory(url: url)
-    }
+//    func loadProjectsFromDirectory(url: URL) -> [Project] {
+//        fileParser.loadProjectsFromDirectory(url: url)
+//    }
     
-    public func loadFakeProjects() {
-        projects = [
-            Project(id: UUID(), name: "Project 1", fileName: "Project1.md", fileURL: URL(string: "some/path/to/notes")!, content: [
-//                Note(id: 1),
-                Action(id: 2, title: "Do the thing", completed: false, tags: []),
-                Action(
-                    id: 3,
-                    title: "Take out the trash",
-                    completed: false,
-                    tags: ["#adam", "#next"],
-                    dueDate: "📅 2021-09-07",
-                    doneDate: nil
-                )
-            ])
-        ]
-    }
+//    public func loadFakeProjects() {
+//        projects = [
+//            Project(id: UUID(), name: "Project 1", fileName: "Project1.md", fileURL: URL(string: "some/path/to/notes")!, content: [
+//                Action(id: 2, title: "Do the thing", completed: false, tags: []),
+//                Action(
+//                    id: 3,
+//                    title: "Take out the trash",
+//                    completed: false,
+//                    tags: ["#adam", "#next"],
+//                    dueDate: "📅 2021-09-07",
+//                    doneDate: nil
+//                )
+//            ])
+//        ]
+//    }
     
     public func toggleTaskCompletion(for todo: Action, in project: Project) {
         var lines: [String] = []

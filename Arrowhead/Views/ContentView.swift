@@ -12,15 +12,54 @@ struct AppReducer {
     struct State: Equatable {
         @Presents var destination: Destination.State?
         var overview: OverviewReducer.State = OverviewReducer.State()
-    }
-    enum Action: Sendable {
-        case destination(PresentationAction<Destination.Action>)
-        case overview(OverviewReducer.Action)
+        var projects: [Project] = []
     }
     
+    enum Action: Sendable {
+        case `internal`(InternalAction)
+        case view(ViewAction)
+        
+        case destination(PresentationAction<Destination.Action>)
+        case overview(OverviewReducer.Action)
+        
+        @CasePathable
+        enum InternalAction: Sendable {
+            case onLoad(Result<[Project], Error>)
+        }
+        
+        @CasePathable
+        enum ViewAction {
+            case onAppear
+        }
+    }
+    
+    @Dependency(\.fileClient) var fileClient
+    
     var body: some ReducerOf<Self> {
-        Reduce { _, _ in
-            return .none
+        Reduce { state, action in
+            switch action {
+            case let .internal(action):
+                switch action {
+                case .onLoad:
+                    // TODO: handle error
+                    return .none
+                }
+                
+            case let .view(action):
+                switch action {
+                case .onAppear:
+                    return .run { send in
+                        do {
+                            try await fileClient.loadAllProjects()
+//                            await send(.internal(.onLoad(.success(projects))))
+                        } catch {
+                            await send(.internal(.onLoad(.failure("Failure" as! Error))))
+                        }
+                    }
+                }
+            case .destination:
+                return .none
+            }
         }
         .ifLet(\.$destination, action: \.destination)
     }
@@ -40,7 +79,7 @@ struct ContentView: View {
             )
         }
         .onAppear {
-            fileController.loadAllProjects()
+            store.send(.view(.onAppear))
         }
     }
 }

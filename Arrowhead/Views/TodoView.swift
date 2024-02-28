@@ -1,15 +1,14 @@
+import Dependencies
 import SwiftUI
 
 struct TodoView: View {
     @State var projectId: UUID
     @State var actionId: Int
-//    @Binding var todo: Action
     
-    var fileController: FileController
+    @Dependency(\.fileClient) var fileClient
     
-//    @ViewBuilder
     var body: some View {
-        let project = fileController.projects.filter { project in
+        let project = fileClient.getProjects().filter { project in
                 project.id == projectId
         }.first
 
@@ -25,7 +24,7 @@ struct TodoView: View {
             HStack {
                 Image(systemName: todo.completed ? "checkmark.circle.fill" : "circle")
                     .onTapGesture {
-                        fileController.toggleTaskCompletion(for: todo, in: project)
+//                        fileController.toggleTaskCompletion(for: todo, in: project)
                     }
                 Text(todo.title)
                 Spacer()
@@ -61,11 +60,8 @@ struct TodoView: View {
 
 struct TodoView_Previews: PreviewProvider {
     static var previews: some View {
-        let fileController = FileController()
-        fileController.loadFakeProjects()
-        
         // TODO: give correct uuid and action id
-        return TodoView(projectId: UUID(), actionId: 1, fileController: FileController())
+        return TodoView(projectId: UUID(), actionId: 1)
             .preferredColorScheme(.dark)
     }
 }
