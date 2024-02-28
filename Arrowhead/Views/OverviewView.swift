@@ -11,9 +11,9 @@ struct OverviewReducer {
 
 struct OverviewView: View {
     let store: StoreOf<OverviewReducer>
-    var bookmarkController: BookmarkController
-    
     @State private var showSettings = false
+    
+    @Dependency(\.bookmarkClient) var bookmarkClient
     
     var body: some View {
         List {
@@ -22,7 +22,7 @@ struct OverviewView: View {
             } label: {
                 Text("All Tasks")
             }
-            ForEach(bookmarkController.bookmarks, id: \.uuid) { bookmark in
+            ForEach(bookmarkClient.getBookmarks(), id: \.uuid) { bookmark in
                 NavigationLink {
                     ProjectsView(url: bookmark.url)
                 } label: {
@@ -59,8 +59,7 @@ struct OverviewView_Previews: PreviewProvider {
                     )
                 ) {
                     OverviewReducer()
-                },
-                bookmarkController: BookmarkController()
+                }
             )
         }
     }

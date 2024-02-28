@@ -1,10 +1,11 @@
+import Dependencies
 import SwiftUI
 
 struct FolderView: View {
     @State private var showFilePicker = false
-    
-    private var bookmarkController = BookmarkController()
     @State private var editMode = EditMode.inactive
+    
+    @Dependency(\.bookmarkClient) var bookmarkClient
     
     var body: some View {
         Section(
@@ -14,14 +15,14 @@ struct FolderView: View {
                 .font(.title2)
                 .foregroundColor(.black)
         ) {
-            ForEach(bookmarkController.bookmarks, id: \.uuid) { bookmark in
+            ForEach(bookmarkClient.getBookmarks(), id: \.uuid) { bookmark in
                 HStack {
                     Image(systemName: "folder")
                         .foregroundColor(.accentColor)
                     Text(bookmark.url.lastPathComponent)
                 }
             }
-            .onDelete(perform: bookmarkController.removeBookmark)
+            .onDelete(perform: bookmarkClient.removeBookmark)
             
             Button {
                 showFilePicker = true
@@ -29,7 +30,7 @@ struct FolderView: View {
                 Label("Add Folder", systemImage: "plus")
             }
             .sheet(isPresented: $showFilePicker) {
-                DocumentPickerView(bookmarkController: bookmarkController)
+                DocumentPickerView()
             }
         }
         .headerProminence(.increased)

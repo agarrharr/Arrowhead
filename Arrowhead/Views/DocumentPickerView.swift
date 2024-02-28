@@ -1,8 +1,7 @@
+import Dependencies
 import SwiftUI
 
 struct DocumentPickerView: UIViewControllerRepresentable {
-    var bookmarkController: BookmarkController
-    
     func makeCoordinator() -> Coordinator {
         return Coordinator(self)
     }
@@ -21,13 +20,18 @@ struct DocumentPickerView: UIViewControllerRepresentable {
     
     class Coordinator: NSObject, UIDocumentPickerDelegate {
         var parent: DocumentPickerView
+        @Dependency(\.bookmarkClient) var bookmarkClient
         
         init(_ parent: DocumentPickerView) {
             self.parent = parent
         }
         
         func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL) {
-            parent.bookmarkController.addBookmark(for: url)
+            do {
+                try bookmarkClient.addBookmark(for: url)
+            } catch {
+                // TODO: handle error
+            }
         }
         
         func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {

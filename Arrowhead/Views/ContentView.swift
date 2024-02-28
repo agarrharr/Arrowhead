@@ -66,14 +66,12 @@ struct AppReducer {
 }
 
 struct ContentView: View {
-    var bookmarkController = BookmarkController()
     @Bindable var store: StoreOf<AppReducer>
     
     var body: some View {
         NavigationView {
             OverviewView(
-                store: store.scope(state: \.overview, action: \.overview),
-                bookmarkController: bookmarkController
+                store: store.scope(state: \.overview, action: \.overview)
             )
         }
         .onAppear {

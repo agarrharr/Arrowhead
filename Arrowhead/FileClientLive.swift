@@ -12,10 +12,10 @@ extension FileClient: DependencyKey {
         
         return Self(
             loadAllProjects: {
-                let bookmarkController = BookmarkController()
+                @Dependency(\.bookmarkClient) var bookmarkClient
                 
                 // Get bookmarks with Combine
-                bookmarkController.bookmarks.forEach { bookmark in
+                bookmarkClient.getBookmarks().forEach { bookmark in
                     projects.append(contentsOf: loadProjectsFromDirectory(url: bookmark.url))
                 }
                 print(projects)
