@@ -7,11 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		68B7138427F25EBC00BBA7A4 /* FileParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B7138327F25EBC00BBA7A4 /* FileParser.swift */; };
-		68B7138627F2614A00BBA7A4 /* LineParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B7138527F2614A00BBA7A4 /* LineParser.swift */; };
 		68B7138827F264A100BBA7A4 /* FileParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B7138727F264A100BBA7A4 /* FileParserTests.swift */; };
 		68B7138B27F266C300BBA7A4 /* Project1.md in Resources */ = {isa = PBXBuildFile; fileRef = 68B7138A27F266C300BBA7A4 /* Project1.md */; };
 		991C8EF22B8EDB9A00B227BA /* BookmarkClient in Frameworks */ = {isa = PBXBuildFile; productRef = 991C8EF12B8EDB9A00B227BA /* BookmarkClient */; };
+		991C8EF42B8EE46900B227BA /* FileClient in Frameworks */ = {isa = PBXBuildFile; productRef = 991C8EF32B8EE46900B227BA /* FileClient */; };
 		9940E385288B2F5F0017E3A4 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9940E384288B2F5F0017E3A4 /* SettingsView.swift */; };
 		9940E387288F06AC0017E3A4 /* ProjectsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9940E386288F06AC0017E3A4 /* ProjectsView.swift */; };
 		994C201F26C1D4EA0029E6DC /* AllTasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994C201E26C1D4EA0029E6DC /* AllTasksView.swift */; };
@@ -21,7 +20,6 @@
 		99613D5726F39516008D0FA3 /* OverviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99613D5426F39516008D0FA3 /* OverviewView.swift */; };
 		99613D5826F39516008D0FA3 /* PerspectivesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99613D5526F39516008D0FA3 /* PerspectivesView.swift */; };
 		998509AB27FF8D81001AFE9F /* LineParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998509AA27FF8D81001AFE9F /* LineParserTests.swift */; };
-		99BF586427FF8F5B00662FA4 /* LineParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B7138527F2614A00BBA7A4 /* LineParser.swift */; };
 		99E8CFD926C1701C008CEFE2 /* ArrowheadApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E8CFD826C1701C008CEFE2 /* ArrowheadApp.swift */; };
 		99E8CFDB26C1701C008CEFE2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E8CFDA26C1701C008CEFE2 /* ContentView.swift */; };
 		99E8CFDD26C1701E008CEFE2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99E8CFDC26C1701E008CEFE2 /* Assets.xcassets */; };
@@ -29,8 +27,6 @@
 		99EAE7C026E80023007C22AC /* TodoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99EAE7BF26E80023007C22AC /* TodoView.swift */; };
 		99EAE7C226E80882007C22AC /* FolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99EAE7C126E80882007C22AC /* FolderView.swift */; };
 		99ED4AED2B8EA30C001F848B /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 99ED4AEC2B8EA30C001F848B /* ComposableArchitecture */; };
-		99ED4AEF2B8EB156001F848B /* FileClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99ED4AEE2B8EB156001F848B /* FileClient.swift */; };
-		99ED4AF12B8EB383001F848B /* FileClientLive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99ED4AF02B8EB383001F848B /* FileClientLive.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,8 +40,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		68B7138327F25EBC00BBA7A4 /* FileParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileParser.swift; sourceTree = "<group>"; };
-		68B7138527F2614A00BBA7A4 /* LineParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineParser.swift; sourceTree = "<group>"; };
 		68B7138727F264A100BBA7A4 /* FileParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileParserTests.swift; sourceTree = "<group>"; };
 		68B7138A27F266C300BBA7A4 /* Project1.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Project1.md; sourceTree = "<group>"; };
 		9940E384288B2F5F0017E3A4 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -66,8 +60,6 @@
 		99E8CFE626C1701F008CEFE2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		99EAE7BF26E80023007C22AC /* TodoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoView.swift; sourceTree = "<group>"; };
 		99EAE7C126E80882007C22AC /* FolderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderView.swift; sourceTree = "<group>"; };
-		99ED4AEE2B8EB156001F848B /* FileClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileClient.swift; sourceTree = "<group>"; };
-		99ED4AF02B8EB383001F848B /* FileClientLive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileClientLive.swift; sourceTree = "<group>"; };
 		99ED4AF92B8ED6ED001F848B /* Modules */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Modules; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -83,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				991C8EF42B8EE46900B227BA /* FileClient in Frameworks */,
 				99ED4AED2B8EA30C001F848B /* ComposableArchitecture in Frameworks */,
 				991C8EF22B8EDB9A00B227BA /* BookmarkClient in Frameworks */,
 			);
@@ -110,8 +103,6 @@
 			isa = PBXGroup;
 			children = (
 				994C202026C1D6D80029E6DC /* FileController.swift */,
-				68B7138327F25EBC00BBA7A4 /* FileParser.swift */,
-				68B7138527F2614A00BBA7A4 /* LineParser.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -155,8 +146,6 @@
 				99E8CFDC26C1701E008CEFE2 /* Assets.xcassets */,
 				99E8CFE626C1701F008CEFE2 /* Info.plist */,
 				99E8CFDE26C1701E008CEFE2 /* Preview Content */,
-				99ED4AEE2B8EB156001F848B /* FileClient.swift */,
-				99ED4AF02B8EB383001F848B /* FileClientLive.swift */,
 			);
 			path = Arrowhead;
 			sourceTree = "<group>";
@@ -223,6 +212,7 @@
 			packageProductDependencies = (
 				99ED4AEC2B8EA30C001F848B /* ComposableArchitecture */,
 				991C8EF12B8EDB9A00B227BA /* BookmarkClient */,
+				991C8EF32B8EE46900B227BA /* FileClient */,
 			);
 			productName = Arrowhead;
 			productReference = 99E8CFD526C1701C008CEFE2 /* Arrowhead.app */;
@@ -293,7 +283,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				99BF586427FF8F5B00662FA4 /* LineParser.swift in Sources */,
 				68B7138827F264A100BBA7A4 /* FileParserTests.swift in Sources */,
 				998509AB27FF8D81001AFE9F /* LineParserTests.swift in Sources */,
 			);
@@ -304,16 +293,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				9940E385288B2F5F0017E3A4 /* SettingsView.swift in Sources */,
-				99ED4AF12B8EB383001F848B /* FileClientLive.swift in Sources */,
-				68B7138427F25EBC00BBA7A4 /* FileParser.swift in Sources */,
 				9940E387288F06AC0017E3A4 /* ProjectsView.swift in Sources */,
 				99613D5826F39516008D0FA3 /* PerspectivesView.swift in Sources */,
 				99613D5626F39516008D0FA3 /* PerspectiveTileView.swift in Sources */,
-				68B7138627F2614A00BBA7A4 /* LineParser.swift in Sources */,
 				99EAE7C226E80882007C22AC /* FolderView.swift in Sources */,
 				994C201F26C1D4EA0029E6DC /* AllTasksView.swift in Sources */,
 				99EAE7C026E80023007C22AC /* TodoView.swift in Sources */,
-				99ED4AEF2B8EB156001F848B /* FileClient.swift in Sources */,
 				994C202126C1D6D80029E6DC /* FileController.swift in Sources */,
 				99E8CFDB26C1701C008CEFE2 /* ContentView.swift in Sources */,
 				994C202326C2E8980029E6DC /* DocumentPickerView.swift in Sources */,
@@ -590,6 +575,10 @@
 		991C8EF12B8EDB9A00B227BA /* BookmarkClient */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = BookmarkClient;
+		};
+		991C8EF32B8EE46900B227BA /* FileClient */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FileClient;
 		};
 		99ED4AEC2B8EA30C001F848B /* ComposableArchitecture */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -1,10 +1,3 @@
-//
-//  FileParser.swift
-//  Arrowhead
-//
-//  Created by Adam Garrett-Harris on 3/28/22.
-//
-
 import Foundation
 
 class FileParser {

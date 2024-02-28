@@ -1,3 +1,4 @@
+import BookmarkClient
 import Dependencies
 import Foundation
 
@@ -14,7 +15,6 @@ extension FileClient: DependencyKey {
             loadAllProjects: {
                 @Dependency(\.bookmarkClient) var bookmarkClient
                 
-                // Get bookmarks with Combine
                 bookmarkClient.getBookmarks().forEach { bookmark in
                     projects.append(contentsOf: loadProjectsFromDirectory(url: bookmark.url))
                 }
