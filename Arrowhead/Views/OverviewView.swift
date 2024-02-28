@@ -12,7 +12,6 @@ struct OverviewReducer {
 struct OverviewView: View {
     let store: StoreOf<OverviewReducer>
     var bookmarkController: BookmarkController
-    var fileController = FileController()
     
     @State private var showSettings = false
     

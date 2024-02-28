@@ -67,15 +67,13 @@ struct AppReducer {
 
 struct ContentView: View {
     var bookmarkController = BookmarkController()
-    var fileController = FileController()
     @Bindable var store: StoreOf<AppReducer>
     
     var body: some View {
         NavigationView {
             OverviewView(
                 store: store.scope(state: \.overview, action: \.overview),
-                bookmarkController: bookmarkController,
-                fileController: fileController
+                bookmarkController: bookmarkController
             )
         }
         .onAppear {

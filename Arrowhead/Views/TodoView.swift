@@ -24,7 +24,7 @@ struct TodoView: View {
             HStack {
                 Image(systemName: todo.completed ? "checkmark.circle.fill" : "circle")
                     .onTapGesture {
-//                        fileController.toggleTaskCompletion(for: todo, in: project)
+//                        fileClient.toggleTaskCompletion(for: todo, in: project)
                     }
                 Text(todo.title)
                 Spacer()
