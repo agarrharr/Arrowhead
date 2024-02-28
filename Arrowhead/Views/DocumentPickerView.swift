@@ -1,3 +1,4 @@
+import BookmarkClient
 import Dependencies
 import SwiftUI
 

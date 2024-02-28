@@ -11,6 +11,7 @@
 		68B7138627F2614A00BBA7A4 /* LineParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B7138527F2614A00BBA7A4 /* LineParser.swift */; };
 		68B7138827F264A100BBA7A4 /* FileParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B7138727F264A100BBA7A4 /* FileParserTests.swift */; };
 		68B7138B27F266C300BBA7A4 /* Project1.md in Resources */ = {isa = PBXBuildFile; fileRef = 68B7138A27F266C300BBA7A4 /* Project1.md */; };
+		991C8EF22B8EDB9A00B227BA /* BookmarkClient in Frameworks */ = {isa = PBXBuildFile; productRef = 991C8EF12B8EDB9A00B227BA /* BookmarkClient */; };
 		9940E385288B2F5F0017E3A4 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9940E384288B2F5F0017E3A4 /* SettingsView.swift */; };
 		9940E387288F06AC0017E3A4 /* ProjectsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9940E386288F06AC0017E3A4 /* ProjectsView.swift */; };
 		994C201F26C1D4EA0029E6DC /* AllTasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994C201E26C1D4EA0029E6DC /* AllTasksView.swift */; };
@@ -30,9 +31,6 @@
 		99ED4AED2B8EA30C001F848B /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 99ED4AEC2B8EA30C001F848B /* ComposableArchitecture */; };
 		99ED4AEF2B8EB156001F848B /* FileClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99ED4AEE2B8EB156001F848B /* FileClient.swift */; };
 		99ED4AF12B8EB383001F848B /* FileClientLive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99ED4AF02B8EB383001F848B /* FileClientLive.swift */; };
-		99ED4AF32B8EC09A001F848B /* BookmarkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99ED4AF22B8EC09A001F848B /* BookmarkClient.swift */; };
-		99ED4AF52B8EC225001F848B /* BookmarkClientLive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99ED4AF42B8EC225001F848B /* BookmarkClientLive.swift */; };
-		99ED4AF72B8EC5DE001F848B /* Bookmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99ED4AF62B8EC5DE001F848B /* Bookmark.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,9 +68,7 @@
 		99EAE7C126E80882007C22AC /* FolderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderView.swift; sourceTree = "<group>"; };
 		99ED4AEE2B8EB156001F848B /* FileClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileClient.swift; sourceTree = "<group>"; };
 		99ED4AF02B8EB383001F848B /* FileClientLive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileClientLive.swift; sourceTree = "<group>"; };
-		99ED4AF22B8EC09A001F848B /* BookmarkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkClient.swift; sourceTree = "<group>"; };
-		99ED4AF42B8EC225001F848B /* BookmarkClientLive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkClientLive.swift; sourceTree = "<group>"; };
-		99ED4AF62B8EC5DE001F848B /* Bookmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bookmark.swift; sourceTree = "<group>"; };
+		99ED4AF92B8ED6ED001F848B /* Modules */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Modules; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +84,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				99ED4AED2B8EA30C001F848B /* ComposableArchitecture in Frameworks */,
+				991C8EF22B8EDB9A00B227BA /* BookmarkClient in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,6 +97,13 @@
 				68B7138A27F266C300BBA7A4 /* Project1.md */,
 			);
 			path = Fixtures;
+			sourceTree = "<group>";
+		};
+		991C8EF02B8EDB9900B227BA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		99613D5A26F395B5008D0FA3 /* Controllers */ = {
@@ -125,9 +129,11 @@
 		99E8CFCC26C1701C008CEFE2 = {
 			isa = PBXGroup;
 			children = (
+				99ED4AF92B8ED6ED001F848B /* Modules */,
 				99E8CFD726C1701C008CEFE2 /* Arrowhead */,
 				99613D6026F39CDE008D0FA3 /* ArrowheadTests */,
 				99E8CFD626C1701C008CEFE2 /* Products */,
+				991C8EF02B8EDB9900B227BA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -151,9 +157,6 @@
 				99E8CFDE26C1701E008CEFE2 /* Preview Content */,
 				99ED4AEE2B8EB156001F848B /* FileClient.swift */,
 				99ED4AF02B8EB383001F848B /* FileClientLive.swift */,
-				99ED4AF22B8EC09A001F848B /* BookmarkClient.swift */,
-				99ED4AF42B8EC225001F848B /* BookmarkClientLive.swift */,
-				99ED4AF62B8EC5DE001F848B /* Bookmark.swift */,
 			);
 			path = Arrowhead;
 			sourceTree = "<group>";
@@ -219,6 +222,7 @@
 			name = Arrowhead;
 			packageProductDependencies = (
 				99ED4AEC2B8EA30C001F848B /* ComposableArchitecture */,
+				991C8EF12B8EDB9A00B227BA /* BookmarkClient */,
 			);
 			productName = Arrowhead;
 			productReference = 99E8CFD526C1701C008CEFE2 /* Arrowhead.app */;
@@ -299,7 +303,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				99ED4AF72B8EC5DE001F848B /* Bookmark.swift in Sources */,
 				9940E385288B2F5F0017E3A4 /* SettingsView.swift in Sources */,
 				99ED4AF12B8EB383001F848B /* FileClientLive.swift in Sources */,
 				68B7138427F25EBC00BBA7A4 /* FileParser.swift in Sources */,
@@ -309,11 +312,9 @@
 				68B7138627F2614A00BBA7A4 /* LineParser.swift in Sources */,
 				99EAE7C226E80882007C22AC /* FolderView.swift in Sources */,
 				994C201F26C1D4EA0029E6DC /* AllTasksView.swift in Sources */,
-				99ED4AF32B8EC09A001F848B /* BookmarkClient.swift in Sources */,
 				99EAE7C026E80023007C22AC /* TodoView.swift in Sources */,
 				99ED4AEF2B8EB156001F848B /* FileClient.swift in Sources */,
 				994C202126C1D6D80029E6DC /* FileController.swift in Sources */,
-				99ED4AF52B8EC225001F848B /* BookmarkClientLive.swift in Sources */,
 				99E8CFDB26C1701C008CEFE2 /* ContentView.swift in Sources */,
 				994C202326C2E8980029E6DC /* DocumentPickerView.swift in Sources */,
 				99E8CFD926C1701C008CEFE2 /* ArrowheadApp.swift in Sources */,
@@ -586,6 +587,10 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		991C8EF12B8EDB9A00B227BA /* BookmarkClient */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = BookmarkClient;
+		};
 		99ED4AEC2B8EA30C001F848B /* ComposableArchitecture */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 99ED4AEB2B8EA30C001F848B /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
