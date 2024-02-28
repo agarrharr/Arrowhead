@@ -5,6 +5,7 @@ import DependenciesMacros
 public struct FileClient {
   public var loadAllProjects: () async throws -> Void
     public var getProjects: () -> [Project] = { [] }
+    public var toggleTaskCompletion: (_ for: Action, _ in: Project) -> Void
 }
 
 extension FileClient: TestDependencyKey {
